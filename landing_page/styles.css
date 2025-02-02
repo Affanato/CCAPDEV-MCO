@@ -1,0 +1,76 @@
+body {
+    background-color: #A92231;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 97vh;
+}
+
+main {
+    background-color: #EDDAC9;
+    width: 94%;
+    height: 96%;
+    padding: 1em 4.5em;
+    border-radius: 1em;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+}
+
+#header {
+    display: flex;
+    justify-content:space-between;
+    align-items: center;
+    padding: 0 2em;
+    font-family:Krona One;
+    font-weight: normal;
+}
+
+#header h1 {
+    font-size: 2em;
+    margin: 0;
+}
+
+#header button {
+    background-color: black;
+    color: white;
+    font-size: 1.1em;
+    padding: .5em 3.5em;
+    border-radius: 1em;
+    border: none;
+    transition: transform 0.2s ease-in-out; 
+}
+
+#lab-image {
+    width: 100%;
+    height: auto;
+    max-height: 570px;
+}
+
+#view-labs {
+    display: flex;
+    justify-content: center;
+}
+
+#view-labs button {
+    background-color: #A92231;
+    color: white;
+    font-size: 1.2em;
+    padding: .8em 3.5em;
+    border-radius: 1em;
+    border: none;
+    transition: transform 0.2s ease-in-out;; 
+
+}
+
+/* Hover effects */
+#header button:hover {
+    transform: translateY(-1px);
+    cursor: pointer;
+}
+
+#view-labs button:hover {
+    transform: translateY(-1px);
+    cursor: pointer;
+}
