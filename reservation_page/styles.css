@@ -10,7 +10,7 @@ nav {
     width: 100%;
     height: 4.5em;
     border-radius: 0 0 1.5em 1.5em;
-    background-color: black;
+    background-color: #0C0E23;
 }
 
 main {
@@ -72,7 +72,7 @@ main {
     border: 0;
     margin: 1em 0;
     border-radius: 1em;
-    background-color: black;
+    background-color: #0C0E23;
     
     color: white;
     font-size: .5em;
@@ -104,7 +104,7 @@ main {
     text-align: center;
     font-size: 2em;
     font-family: krona one;
-    background-color: black;
+    background-color: #0C0E23;
     border-radius: 0.8em;
     box-sizing: border-box;
 }
@@ -174,6 +174,13 @@ main {
     box-shadow: 0 3px 5px rgba(0, 0, 0, 0.194);
     background-color: #D9D9D9;
     border-radius: 2em;
+    transition: transform .25s ease-in-out, background-color .25s ease-in-out;
+}
+
+#seat-form input:hover {
+    transform: translateY(-2px);
+    background-color: #cce4f0;
+
 }
 
 /* legend (below the seat display) */
