@@ -21,10 +21,11 @@ main {
     align-items: center;
 }
 
+/* Reservation Panel (picking time, date, etc) */
 #reservation-panel {
-    background-color: blue;
     width: 30%;
     height: 95%;
+    border: 1px black solid
 }
 
 #reservation-forms {
@@ -33,16 +34,53 @@ main {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: space-around;
+    justify-content: center;
 }
 
 #reservation-forms section {
-    background-color: greenyellow;
-    width: 100px;
-    height: 100px;
-    border: 1px black solid;
+    background-color: #A92231;
+    width: 65%;
+    margin: .5em 0;
+    padding: 10px 0;
+    border-radius: 1em;
+    box-sizing: border-box;
+
+    color: white;
+    font-size: 1.2em;
+    text-align: center;
+    font-family: krona one;
 }
 
+#reservation-forms #venue {
+    height: 20%;
+    flex-grow: 0.5;
+}
+
+#reservation-forms #date {
+    height: 20%;
+    flex-grow: 2.5;
+}
+
+#reservation-forms #time {
+    height: 10%;
+    flex-grow: .5;
+}
+
+#reservation-forms button {
+    width: 35%;
+    height: 5%;
+    border: 0;
+    margin: 1em 0;
+    border-radius: 1em;
+    background-color: black;
+    
+
+    color: white;
+    font-size: .5em;
+    font-family: krona one;
+}
+
+/* Reservation Display (Seats etc) */
 #reservation-display {
     background-color: green;
     width: 60%;
