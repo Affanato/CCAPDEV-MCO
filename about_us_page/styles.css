@@ -16,6 +16,7 @@ header {
     justify-content: space-between;
     align-items: center;
     padding-left: 2em;
+    box-sizing: border-box;
 
     /* Logo */
     font-family: krona one;
