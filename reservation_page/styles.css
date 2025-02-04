@@ -16,13 +16,12 @@ header {
     justify-content: space-between;
     align-items: center;
     padding-left: 2em;
-}
 
-h1 {
+    /* Logo */
     font-family: krona one;
     font-weight: 100;
     color: #EDDAC9;
-    font-size: 2em;
+    font-size: 1em;
 }
 
 nav {
