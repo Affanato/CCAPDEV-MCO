@@ -1,0 +1,129 @@
+body {
+    background-color: #EDDAC9;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+header {
+    width: 100%;
+    height: 4.5em;
+    border-radius: 0 0 1.5em 1.5em;
+    background-color: #0C0E23;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-left: 2em;
+
+    /* Logo */
+    font-family: krona one;
+    font-weight: 100;
+    color: #EDDAC9;
+    font-size: .9em;
+}
+
+nav {
+    width: 60%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+header input[type="text"] {
+    width: 30%;
+    font-family: krona one;
+    padding: .6em 2em;
+    border-radius: 2em;
+    border: 0;
+}
+
+header a {
+    font-family: krona one;
+    font-size: 1.2em;
+    color: #EDDAC9;
+    text-decoration: none;
+}
+
+main {
+    width: 100vw;
+    height: 87vh;
+    margin-top: 1.5%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;    
+}
+
+.center-items {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+#form-container {
+    width: 30%;
+    height: 75%;
+    background-color: white;
+    border-radius: 1em;
+    justify-content: center;
+    box-shadow: 0 3px  10px rgba(0, 0, 0, 0.329);
+}
+
+#form-container form {
+    width: 95%;
+    height: 85%;
+}
+
+#form-container h1 {
+    margin: 0;
+    font-size: 1.8em;
+    font-family: krona one;
+}
+
+#form-container :is(#email, #password) {
+    font-family: krona one;
+    font-weight: 100;
+    height: 10%;
+    padding: 5px 20px;
+    border: 0;
+    border-radius: 2em;
+    background-color: #D9D9D9;
+}
+
+#form-container #checkbox-container {
+    width: 50%;
+    height: 20px;
+    color: #979797;
+    font-family: krona one;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#form-container input[type="checkbox"] {
+    width: 10%;
+    height: 100%;
+    accent-color: red;
+}
+
+#form-container button {
+    width: 68%;
+    background-color: #A92231;
+    color: white;
+    font-family: krona one; 
+    padding: 2.5% 0;
+    border-radius: 2em;
+}
+
+#form-container p {
+    font-size: .7em;
+    color: #979797;
+    font-family: krona one;   
+}
+
+#form-container a {
+    color: black;
+}
+
