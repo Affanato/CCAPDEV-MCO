@@ -1,0 +1,94 @@
+body {
+    background-color: #EDDAC9;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+header {
+    width: 100%;
+    height: 4.5em;
+    border-radius: 0 0 1.5em 1.5em;
+    background-color: #0C0E23;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-left: 2em;
+
+    /* Logo */
+    font-family: krona one;
+    font-weight: 100;
+    color: #EDDAC9;
+    font-size: 1em;
+}
+
+nav {
+    width: 60%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+header input[type="text"] {
+    width: 30%;
+    font-family: krona one;
+    padding: .6em 2em;
+    border-radius: 2em;
+    border: 0;
+}
+
+header a {
+    font-family: krona one;
+    font-size: 1.3em;
+    color: #EDDAC9;
+    text-decoration: none;
+}
+
+main {
+    width: 100vw;
+    height: 87vh;
+    margin-top: 1.5%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;    
+}
+
+.card {
+    width: 22%;
+    height: 80%;
+    background-color: #A92231;
+    border-radius: 2em;
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.card div {
+    margin: 3% 0;
+    color: white;
+}
+
+.photo {
+    width: 50%;
+    height: 30%;
+    border-radius: 50%;
+    background-color: rgb(180, 177, 177);
+}
+
+.name {
+    height: 10%;
+    font-size: 1.7em;
+    font-family: krona one;
+}
+
+.bio {
+    width: 90%;
+    height: 45%;
+    text-align: center;
+    font-size: .7em;
+    font-family: krona one;
+}
