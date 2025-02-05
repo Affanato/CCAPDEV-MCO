@@ -16,12 +16,13 @@ header {
     justify-content: space-between;
     align-items: center;
     padding-left: 2em;
+    box-sizing: border-box;
 
     /* Logo */
     font-family: krona one;
     font-weight: 100;
     color: #EDDAC9;
-    font-size: .9em;
+    font-size: 1em;
 }
 
 nav {
@@ -41,7 +42,7 @@ header input[type="text"] {
 
 header a {
     font-family: krona one;
-    font-size: 1.2em;
+    font-size: 1.3em;
     color: #EDDAC9;
     text-decoration: none;
 }
@@ -63,7 +64,7 @@ main {
 }
 
 #form-container {
-    width: 30%;
+    width: 27%;
     height: 75%;
     background-color: white;
     border-radius: 1em;
