@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Krona+One&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="register.css">
+    <title>Lambda Lab Reservation</title>
+</head>
+
+<body>
+    <header>
+        <h1>&#411; Lambda Lab Hub</h1>
+        <nav>
+            <input type="text" placeholder="Search..">
+            <a href="#">Home</a>
+            <a href="#">About </a>
+            <a href="#">Log In</a>
+    </header>
+    <main>
+        <section id="form-container" class="center-items">
+            <form action="" class="center-items">
+                <h1>Create an Account</h1>
+                <div id="label">
+                    <label for="radio-container">Classification</label>
+                </div>
+                <div id="radio-container">
+                    <div>
+                        <div class="radio-buttons">
+                            <input type="radio" id="student" name="radio" value="student">
+                            <label for="checkbox">Student</label>
+                        </div>
+                        <div class="radio-buttons">
+                            <input type="radio" id="labtech" name="radio" value="labtech">
+                            <label for="checkbox">Lab Technician</label>
+                        </div>
+                    </div>
+                </div>
+                <input type="text" name="firstname" id="first" placeholder="First Name" class="text">
+                <input type="text" name="lastname" id="last" placeholder="Last Name" class="text">
+                <input type="email" name="email" id="email" placeholder="Email Address" class="text">
+                <input type="text" name="password" id="password" placeholder="Password" class="text">
+
+                <div id="label">
+                    <label for="radio-container">Verify Password</label>
+                </div>
+                <input type="text" name="password" id="password" placeholder="Verify Password" class="text">
+                <button type="submit">Register</button>
+            </form>
+        </section>
+    </main>
+</body>
+
+</html>
