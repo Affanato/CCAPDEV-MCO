@@ -4,6 +4,7 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: center;
+    overflow: hidden;
 }
 
 header {
@@ -82,7 +83,7 @@ main {
 
 .name {
     height: 10%;
-    font-size: 1.7em;
+    font-size: 1.5em;
     font-family: krona one;
 }
 
