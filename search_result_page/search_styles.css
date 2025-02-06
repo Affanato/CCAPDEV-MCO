@@ -38,21 +38,6 @@ header nav {
     align-items: center;
 }
 
-#div-logo {           /*Header Logo Div*/
-
-    width: max-content;
-    display: flex;
-    margin-left: 2em;
-}
-
-span {              
-    color: aliceblue;
-    font-family: 'Krona One', sans-serif;
-    font-weight: 100;
-    color: #EDDAC9;
-    font-size: 1em;
-}
-
 header input[type="text"] {
     width: 35%;
     font-family: krona one;
@@ -83,4 +68,12 @@ header a {
     border-radius: 10px;
     padding: 1.5rem;
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+span {              
+    color: aliceblue;
+    font-family: 'Krona One', sans-serif;
+    font-weight: 100;
+    color: #EDDAC9;
+    font-size: 1em;
 }
