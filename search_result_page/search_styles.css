@@ -13,16 +13,22 @@ body {
     background-color: #EDDAC9;    
 }
 
-header {                       /*header bar*/
+header {
     width: 100%;
     height: 4.5em;
     border-radius: 0 0 1.5em 1.5em;
     background-color: #0C0E23;
-
+    color: white;
     display: flex;
-    align-items: center;
     justify-content: space-between;
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+    align-items: center;
+    padding-left: 2em;
+
+    /* Logo */
+    font-family: krona one;
+    font-weight: 100;
+    color: #EDDAC9;
+    font-size: 1em;
 }
 
 header nav {
