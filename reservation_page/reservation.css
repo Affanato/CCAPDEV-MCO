@@ -16,6 +16,7 @@ header {
     justify-content: space-between;
     align-items: center;
     padding-left: 2em;
+    box-sizing: border-box;
 
     /* Logo */
     font-family: krona one;
@@ -70,7 +71,7 @@ main {
     justify-content: center;
 }
 
-#reservation-forms > div {
+#reservation-forms .reservation-panel {
     background-color: #A92231;
     width: 70%;
     margin: .5em 0;
@@ -91,14 +92,119 @@ main {
     border: .01em solid white;
 }
 
+#reservation-forms #venue-panel {
+    height: 15%;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#venue-selector-container {
+    width: 85%;
+    height: 65%;
+    display: flex;
+}
+
+#venue-selector-container div {
+    width: 50%;
+    font-size: .8em;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+#venue-selector-container #venue-labels {
+    display: flex;
+    align-items: flex-start;
+}
+
 #reservation-forms #date-panel {
-    height: 20%;
-    flex-grow: 2.5;
+    height: 30%;
+    flex-grow: 3;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#date-panel #calendar-container {
+    width: 85%;
+    height: 80%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+#date-panel #month {
+    font-size: .7em;
+    width: 95%;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: .5rem;
+}
+
+#date-panel #week {
+    width: 110%;
+    display: flex;
+    justify-content: space-evenly;
+    margin-bottom: .3rem;
+}
+#date-panel #days {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr); /* 7 equal columns */
+    grid-template-rows:  repeat(6, 1fr); /* First row auto, rest evenly spaced */
+    width: 100%;
+    max-width: 400px; /* Adjust as needed */
+    background-color: transparent;
+    font-size: .9em;
+    align-content: center;
+}
+
+#date-panel .date:hover {
+    border: 0;
+    box-shadow: none;
+    transform: translateY(-2px);
+    color: whitesmoke;
+}
+
+#date-panel .not-part:hover {
+    border: 0;
+    box-shadow: none;
+    transform: translateY(0);
+}
+
+#date-panel .day {
+    font-size: 0.7em;
+}
+
+#date-panel .date {
+    font-size: .6em;
+    background-color: transparent;
+    box-shadow: none;
+    height: 50%;
+    width: 105%;
+    box-shadow: none;
+    text-align: center;
+}
+
+#date-panel #calendar-container #days .not-part {
+    color: grey
 }
 
 #reservation-forms #time-panel {
     height: 10%;
-    flex-grow: .8;
+    flex-grow: .6;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+#time-panel select {
+    width: 65%;
 }
 
 #reservation-forms button {
@@ -114,6 +220,15 @@ main {
     font-family: krona one;
     box-shadow: 0 3px 3px rgba(0, 0, 0, 0.353);
     transition: transform .3s ease-in-out, box-shadow .4s ease-in-out;
+}
+
+.select {
+    font-size: .7em;
+    font-family: krona one;
+    padding: 5px 0;
+    text-align: center;
+    border: 0;
+    border-radius: 2em;
 }
 
 #reservation-forms button:hover {
@@ -224,7 +339,14 @@ main {
 #seat-form input:hover {
     transform: translateY(-2px);
     background-color: #cce4f0;
+}
 
+#seat-form input[class="selected"] {
+    background-color: #68BEE6;
+}
+
+#seat-form input[class="reserved"] {
+    background-color: gray;
 }
 
 /* legend (below the seat display) */

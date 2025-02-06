@@ -22,18 +22,126 @@
     <main>
         <section id="reservation-container">
             <form id="reservation-forms" action="">
-                <div id="venue-panel">
+                <div id="venue-panel" class="reservation-panel">
                     <span>Venue</span>
                     <hr>
-
+                    <div id="venue-selector-container">
+                        <div id="venue-labels">
+                            <label for="building">Building</label>
+                            <label for="room">Room</label>
+                        </div>
+                        <div id="venue-inputs">
+                            <select name="building" class="select">
+                                <option value="goks">Gokongwei</option>
+                                <option value="goks">Andrew</option>
+                                <option value="goks">St. La Salle</option>
+                            </select>
+                            <select name="room" class="select">
+                                <option value="GK104">GK104</option>
+                                <option value="GK104">GK103</option>
+                                <option value="GK104">AG1905</option>
+                                <option value="GK104">AG1906</option>
+                                <option value="GK104">LS319</option>
+                                <option value="GK104">LS226</option>
+                            </select>
+                        </div>
+                    </div>
                 </div>
-                <div id="date-panel">
+                <div id="date-panel" class="reservation-panel">
                     <span>Date</span>
                     <hr>
+                    <div id="calendar-container">
+                        <div id="month">
+                            <img src="../Assets/leftarrow.png" alt="">
+                            <span>February</span>
+                            <img src="../Assets/rightarrow.png" alt="">
+                        </div>
+                        <div id="week">
+                            <div class="day" id="Su">Su</div>
+                            <div class="day" id="Mo">Mo</div>
+                            <div class="day" id="Tu">Tu</div>
+                            <div class="day" id="We">We</div>
+                            <div class="day" id="Th">Th</div>
+                            <div class="day" id="Fr">Fr</div>
+                            <div class="day" id="Sa">Sa</div>
+                        </div>
+                        <div id="days">
+                            <button class="date not-part">28</button>
+                            <button class="date not-part">29</button>
+                            <button class="date not-part">30</button>
+                            <button class="date not-part">31</button>
+                            <button class="date">1</button>
+                            <button class="date">2</button>
+                            <button class="date">3</button>
+                            <button class="date">4</button>
+                            <button class="date">5</button>
+                            <button class="date">6</button>
+                            <button class="date">7</button>
+                            <button class="date">8</button>
+                            <button class="date">9</button>
+                            <button class="date">10</button>
+                            <button class="date">11</button>
+                            <button class="date">12</button>
+                            <button class="date">13</button>
+                            <button class="date">14</button>
+                            <button class="date">15</button>
+                            <button class="date">16</button>
+                            <button class="date">17</button>
+                            <button class="date">18</button>
+                            <button class="date">19</button>
+                            <button class="date">20</button>
+                            <button class="date">21</button>
+                            <button class="date">22</button>
+                            <button class="date">23</button>
+                            <button class="date">24</button>
+                            <button class="date">25</button>
+                            <button class="date">26</button>
+                            <button class="date">27</button>
+                            <button class="date">28</button>
+                            <button class="date not-part">1</button>
+                            <button class="date not-part">2</button>
+                            <button class="date not-part">3</button>
+                            <button class="date not-part">4</button>
+                            <button class="date not-part">5</button>
+                            <button class="date not-part">6</button>
+                            <button class="date not-part">7</button>
+                            <button class="date not-part">8</button>
+                            <button class="date not-part">9</button>
+                            <button class="date not-part">10</button>
+                        </div>
+                    </div>
                 </div>
-                <div id="time-panel">
+                <div id="time-panel" class="reservation-panel">
                     <span>Time</span>
                     <hr>
+                    <select name="time" class="select">
+                        <option value="7:30">7:30 AM</option>
+                        <option value="8:00">8:00 AM</option>
+                        <option value="8:30">8:30 AM</option>
+                        <option value="9:00">9:00 AM</option>
+                        <option value="9:30">9:30 AM</option>
+                        <option value="10:00">10:00 AM</option>
+                        <option value="10:30">10:30 AM</option>
+                        <option value="11:00">11:00 AM</option>
+                        <option value="11:30">11:30 AM</option>
+                        <option value="12:00">12:00 PM</option>
+                        <option value="12:30">12:30 PM</option>
+                        <option value="13:00">1:00 PM</option>
+                        <option value="13:30">1:30 PM</option>
+                        <option value="14:00">2:00 PM</option>
+                        <option value="14:30">2:30 PM</option>
+                        <option value="15:00">3:00 PM</option>
+                        <option value="15:30">3:30 PM</option>
+                        <option value="16:00">4:00 PM</option>
+                        <option value="16:30">4:30 PM</option>
+                        <option value="17:00">5:00 PM</option>
+                        <option value="17:30">5:30 PM</option>
+                        <option value="18:00">6:00 PM</option>
+                        <option value="18:30">6:30 PM</option>
+                        <option value="19:00">7:00 PM</option>
+                        <option value="19:30">7:30 PM</option>
+                        <option value="20:00">8:00 PM</option>
+                    </select>
                 </div>
                 <button>Check Availability</button>
             </form>
@@ -82,6 +190,8 @@
                             <input type="button">
                             <input type="button">
                             <input type="button">
+                            <input type="button" class="reserved">
+                            <input type="button" class="reserved">
                             <input type="button">
                             <input type="button">
                             <input type="button">
@@ -89,10 +199,8 @@
                             <input type="button">
                             <input type="button">
                             <input type="button">
-                            <input type="button">
-                            <input type="button">
-                            <input type="button">
-                            <input type="button">
+                            <input type="button" class="reserved">
+                            <input type="button" class="reserved">
                             <input type="button">
                             <input type="button">
                         </div>
@@ -107,7 +215,7 @@
                             <input type="button">
                             <input type="button">
                             <input type="button">
-                            <input type="button">
+                            <input type="button" class="selected">
                             <input type="button">
                             <input type="button">
                             <input type="button">
