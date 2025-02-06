@@ -44,9 +44,7 @@ main {
 
 #lab-image {
     width: 100%;
-    height: auto;
-    min-height: 570px;
-    max-height: 35vw;
+    height: 500px;
 }
 
 #view-labs {
