@@ -1,0 +1,176 @@
+body {
+    background-color: #EDDAC9;
+    font-family: 'Krona One', sans-serif;
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+}
+
+header {
+    width: 100%;
+    height: 4.5em;
+    border-radius: 0 0 1.5em 1.5em;
+    background-color: #0C0E23;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-left: 2em;
+    box-sizing: border-box;
+
+    /* Logo */
+    font-family: krona one;
+    font-weight: 100;
+    color: #EDDAC9;
+    font-size: 1em;
+}
+
+nav {
+    width: 60%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+header input[type="text"] {
+    width: 30%;
+    font-family: krona one;
+    padding: .6em 2em;
+    border-radius: 2em;
+    border: 0;
+}
+
+header a {
+    font-family: krona one;
+    font-size: 1.3em;
+    color: #EDDAC9;
+    text-decoration: none;
+}
+main {
+    width: 100%;
+    max-width: 1200px;
+    height: auto;
+    margin: 0 auto;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+}
+
+
+
+/* Profile Section */
+#profile-section {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    margin-top: 8em; /* Add more spacing to account for fixed header */
+    padding: 2em;
+}
+
+#profile-card {
+    display: flex;
+    align-items: center;
+    background-color: #FFF;
+    padding: 3em;
+    border-radius: 1em;
+    width: 95%;
+    max-width: 1000px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 1.5em;
+}
+
+#profile-image {
+    width: 150px;
+    height: 150px;
+    background-color: #E0E0E0;
+    border-radius: 50%;
+    margin-right: 2em;
+    flex-shrink: 0;
+}
+
+#profile-info {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1; /* Allow this section to grow and fill space */
+}
+
+#profile-info h2 {
+    margin: 0 0 0.5em;
+    font-size: 2em;
+}
+
+#profile-info p {
+    margin: 0;
+    color: #555;
+    font-size: 1.2em;
+}
+
+#description {
+    width: 100%;
+    height: 100px; /* Adjust the height as needed */
+    font-size: 1.2em;
+    border-radius: 0.5em;
+    padding: 0.5em;
+    border: 1px solid #ccc;
+    resize: none; /* Disable resizing */
+    outline: none;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+    flex-grow: 1;
+}
+
+
+#edit-button {
+    background-color: #0C1026;
+    color: white;
+    padding: 1em 2.5em;
+    margin-top: 0.5em;
+    border-radius: 1em;
+    border: none;
+    font-size: 1.1em;
+    cursor: pointer;
+    align-self: flex-start; /* Align button to the left */
+}
+
+#edit-button:hover {
+    transform: translateY(-2px);
+}
+
+/* Reservation Details */
+#reservation-details {
+    margin-top: 3em;
+    background-color: #FFF;
+    padding: 2em;
+    border-radius: 1em;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.reservation-header {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 1em;
+}
+
+.reservation-header span {
+    background-color: #A92231;
+    color: #FFF;
+    padding: 0.5em;
+    border-radius: 0.5em;
+    font-size: 1.1em;
+}
+
+.reservation-row {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    text-align: center;
+    padding: 0.5em 0;
+    border-top: 1px solid #E0E0E0;
+}
+
+.reservation-row span {
+    padding: 0.8em;
+    background-color: #F8F8F8;
+    border-radius: 0.5em;
+    font-size: 1.1em;
+}
