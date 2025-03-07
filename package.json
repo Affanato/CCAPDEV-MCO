@@ -18,9 +18,11 @@
   "homepage": "https://github.com/Affanato/CCAPDEV-MCO#readme",
   "dependencies": {
     "bcryptjs": "^3.0.2",
+    "cors": "^2.8.5",
     "dotenv": "^16.4.7",
     "express": "^4.21.2",
     "express-handlebars": "^8.0.1",
+    "helmet": "^8.0.0",
     "mongoose": "^8.12.1"
   }
 }
