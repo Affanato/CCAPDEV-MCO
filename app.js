@@ -57,10 +57,58 @@ app.use((err, req, res, next) => {
 
 // Render the landing page and specify that it's the homepage (to conditionally hide header)
 app.get('/', (req, res) => {
-    res.render('landing_page', {isLandingPage: true}); 
+    res.render('landing_page',
+        {isLandingPage: true});
 });
+
 app.get('/login', (req, res) => {
-    res.render('login', {extraCSS: '<link rel="stylesheet" href="/login.css">'});  // ✅ Make sure login.hbs is inside /views/layouts
+    res.render('login',
+        {extraCSS: '<link rel="stylesheet" href="/login.css">'});  // ✅ Make sure login.hbs is inside /views/layouts
+});
+
+app.get('/reservation', (req, res) => {
+    res.render('reservation',
+        {extraCSS: '<link rel="stylesheet" href="/reservation.css">'
+    });
+});
+
+app.get('/home', (req, res) => {
+    res.render('landing_page',
+        {isLandingPage: true, extraCSS: '<link rel="stylesheet" href="/landing_page.css">'
+    });
+});
+
+app.get('/register', (req, res) => {
+    res.render('register', {
+        extraCSS: '<link rel="stylesheet" href="/register.css">'  // If you have specific CSS
+    });
+});
+
+app.get('/about', (req, res) => {
+    res.render('about', {
+        extraCSS: '<link rel="stylesheet" href="/about.css">'  // Optional if there's a separate CSS file
+    });
+});
+
+// Profile Page
+app.get('/profile', (req, res) => {
+    res.render('profile', {
+        extraCSS: '<link rel="stylesheet" href="/profile.css">'  // Optional if there's a separate CSS file
+    });
+});
+
+// Profile Edit Page
+app.get('/profile/edit', (req, res) => {
+    res.render('profile_edit', {
+        extraCSS: '<link rel="stylesheet" href="/profile_edit.css">'
+    });
+});
+
+// Search Results Page
+app.get('/search-results', (req, res) => {
+    res.render('search_results', {
+        extraCSS: '<link rel="stylesheet" href="/search_results.css">'
+    });
 });
 
 // Start the server
