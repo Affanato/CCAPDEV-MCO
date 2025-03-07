@@ -5,34 +5,36 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/css2?family=Krona+One&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="login.css">
+    <link rel="stylesheet" href="/public/login.css">
     <title>Lambda Lab Reservation</title>
 </head>
 
 <body>
-    <header>
-        <h1>&#411; Lambda Lab Hub</h1>
-        <nav>
-            <input type="text" placeholder="Search..">
-            <a href="../layouts/landing_page.hbs">Home</a>
-            <a href="../layouts/about.hbs">About </a>
-            <a href="login.hbs">Log In</a>
-    </header>
-    <main>
-        <section id="form-container" class="center-items">
-            <form action="profile.hbs" class="center-items">
-                <h1>Welcome back!</h1>
-                <input type="email" name="email" id="email" placeholder="Email Address" class="text">
-                <input type="text" name="password" id="password" placeholder="Password" class="text">
-                <div id="checkbox-container">
-                    <input type="checkbox" id="checkbox">
-                    <label for="checkbox">Remember me</label>
-                </div>
-                <button type="submit" act>Login</button>
-            </form>
-            <p>Don't have an account? <a href="register.hbs">Register Here!</a></p>
-        </section>
-    </main>
+<header>
+    <h1>&#411; Lambda Lab Hub</h1>
+    <nav>
+        <input type="text" placeholder="Search..">
+        <a href="/">Home</a>
+        <a href="/about">About</a>
+        <a href="/login">Log In</a>
+    </nav>
+</header>
+
+<main>
+    <section id="form-container" class="center-items">
+        <form action="/profile" method="POST" class="center-items">
+            <h1>Welcome back!</h1>
+            <input type="email" name="email" id="email" placeholder="Email Address" class="text" required>
+            <input type="password" name="password" id="password" placeholder="Password" class="text" required>
+            <div id="checkbox-container">
+                <input type="checkbox" id="checkbox">
+                <label for="checkbox">Remember me</label>
+            </div>
+            <button type="submit">Login</button>
+        </form>
+        <p>Don't have an account? <a href="/register">Register Here!</a></p>
+    </section>
+</main>
 </body>
 
 </html>

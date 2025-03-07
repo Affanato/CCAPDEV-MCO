@@ -5,51 +5,51 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/css2?family=Krona+One&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="register.css">
+    <link rel="stylesheet" href="/register.css"> <!-- Ensure correct path for CSS -->
     <title>Lambda Lab Reservation</title>
 </head>
 
 <body>
-    <header>
-        <h1>&#411; Lambda Lab Hub</h1>
-        <nav>
-            <input type="text" placeholder="Search..">
-            <a href="../layouts/landing_page.hbs">Home</a>
-            <a href="../layouts/about.hbs">About </a>
-            <a href="login.hbs">Log In</a>
-    </header>
-    <main>
-        <section id="form-container" class="center-items">
-            <form action="" class="center-items">
-                <h1>Create an Account</h1>
-                <div id="label">
-                    <label for="radio-container">Classification</label>
-                </div>
-                <div id="radio-container">
-                    <div>
-                        <div class="radio-buttons">
-                            <input type="radio" id="student" name="radio" value="student">
-                            <label for="checkbox">Student</label>
-                        </div>
-                        <div class="radio-buttons">
-                            <input type="radio" id="labtech" name="radio" value="labtech">
-                            <label for="checkbox">Lab Technician</label>
-                        </div>
+<header>
+    <h1>&#411; Lambda Lab Hub</h1>
+    <nav>
+        <input type="text" placeholder="Search..">
+        <a href="/">Home</a> <!-- Corrected path -->
+        <a href="/about">About</a> <!-- Corrected path -->
+        <a href="/login">Log In</a> <!-- Corrected path -->
+    </nav>
+</header>
+<main>
+    <section id="form-container" class="center-items">
+        <form action="/register" method="POST" class="center-items"> <!-- Corrected action -->
+            <h1>Create an Account</h1>
+            <div id="label">
+                <label for="radio-container">Classification</label>
+            </div>
+            <div id="radio-container">
+                <div>
+                    <div class="radio-buttons">
+                        <input type="radio" id="student" name="classification" value="student">
+                        <label for="student">Student</label> <!-- Corrected label association -->
+                    </div>
+                    <div class="radio-buttons">
+                        <input type="radio" id="labtech" name="classification" value="labtech">
+                        <label for="labtech">Lab Technician</label> <!-- Corrected label association -->
                     </div>
                 </div>
-                <input type="text" name="firstname" id="first" placeholder="First Name" class="text">
-                <input type="text" name="lastname" id="last" placeholder="Last Name" class="text">
-                <input type="email" name="email" id="email" placeholder="Email Address" class="text">
-                <input type="text" name="password" id="password" placeholder="Password" class="text">
-
-                <div id="label">
-                    <label for="radio-container">Verify Password</label>
-                </div>
-                <input type="text" name="password" id="password" placeholder="Verify Password" class="text">
-                <button type="submit">Register</button>
-            </form>
-        </section>
-    </main>
+            </div>
+            <input type="text" name="firstname" id="first" placeholder="First Name" class="text">
+            <input type="text" name="lastname" id="last" placeholder="Last Name" class="text">
+            <input type="email" name="email" id="email" placeholder="Email Address" class="text">
+            <input type="password" name="password" id="password" placeholder="Password" class="text">
+            <div id="label">
+                <label for="verify-password">Verify Password</label> <!-- Corrected label association -->
+            </div>
+            <input type="password" name="verifyPassword" id="verify-password" placeholder="Verify Password" class="text"> <!-- Corrected ID and name -->
+            <button type="submit">Register</button>
+        </form>
+    </section>
+</main>
 </body>
 
 </html>

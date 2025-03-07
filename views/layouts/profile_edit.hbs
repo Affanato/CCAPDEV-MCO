@@ -5,39 +5,38 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/css2?family=Krona+One&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="profile_styles.css">
+    <link rel="stylesheet" href="/public/profile_styles.css">
     <title>Lambda Lab Profile</title>
 </head>
 
 <body>
-    <header>
-        <h1>&#411; Lambda Lab Hub</h1>
-        <nav>
-            <input type="text" placeholder="Search..">
-            <a href="../layouts/landing_page.hbs">Home</a>
-            <a href="../layouts/about.hbs">About </a>
-            <a href="../layouts/login.hbs">Log In</a>
-    </header>
-    <main>
-        <!-- Profile Section -->
-        <section id="profile-section">
-            <div id="profile-card">
-                <div id="profile-image"></div>
-                <div id="profile-info">
-                    <h2>Affanato</h2>
-                    <textarea id="description" rows="5"
-                        style="width: 100%; font-size: 1.2em; border-radius: 0.5em; padding: 0.5em; border: 1px solid #ccc; resize: none;">
-                        How did I fail to give you all the love that you deserve.
-                    </textarea>
-                </div>
+<header>
+    <h1>&#411; Lambda Lab Hub</h1>
+    <nav>
+        <input type="text" placeholder="Search..">
+        <a href="/">Home</a>
+        <a href="/about">About</a>
+        <a href="/login">Log In</a>
+    </nav>
+</header>
+
+<main>
+    <!-- Profile Section -->
+    <section id="profile-section">
+        <div id="profile-card">
+            <div id="profile-image"></div>
+            <div id="profile-info">
+                <h2>{{user.name}}</h2>
+                <textarea id="description" rows="5" style="width: 100%; font-size: 1.2em; border-radius: 0.5em; padding: 0.5em; border: 1px solid #ccc; resize: none;">
+                    {{user.bio}}
+                </textarea>
             </div>
-            <a href="profile.hbs"><button id="edit-button">Save Edits</button></a>
-
-        </section>
-
-
-        </section>
-    </main>
+        </div>
+        <form action="/profile" method="POST">
+            <button type="submit" id="edit-button">Save Edits</button>
+        </form>
+    </section>
+</main>
 </body>
 
 </html>

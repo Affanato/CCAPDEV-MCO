@@ -5,75 +5,53 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/css2?family=Krona+One&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="profile_styles.css">
+    <link rel="stylesheet" href="/public/profile_styles.css">
     <title>Lambda Lab Profile</title>
 </head>
 
 <body>
-    <header>
-        <h1>&#411; Lambda Lab Hub</h1>
-        <nav>
-            <input type="text" placeholder="Search..">
-            <a href="../layouts/landing_page.hbs">Home</a>
-            <a href="../layouts/about.hbs">About </a>
-            <a href="../layouts/login.hbs">Log In</a>
-    </header>
+<header>
+    <h1>&#411; Lambda Lab Hub</h1>
+    <nav>
+        <input type="text" placeholder="Search..">
+        <a href="/">Home</a>
+        <a href="/about">About</a>
+        <a href="/login">Log In</a>
+    </nav>
+</header>
 
-    <main>
-        <!-- Profile Section -->
-        <section id="profile-section">
-            <div id="profile-card">
-                <div id="profile-image"></div>
-                <div id="profile-info">
-                    <h2>Affanato</h2>
-                    <p>How did I fail to give you all the love that you deserve.</p>
-                </div>
+<main>
+    <!-- Profile Section -->
+    <section id="profile-section">
+        <div id="profile-card">
+            <div id="profile-image"></div>
+            <div id="profile-info">
+                <h2>{{user.name}}</h2>
+                <p>{{user.bio}}</p>
             </div>
-            <a href="profile_edit.hbs"><button id="edit-button">Edit Profile</button></a>
-        </section>
+        </div>
+        <a href="/profile/edit"><button id="edit-button">Edit Profile</button></a>
+    </section>
 
-        <!-- Reservation Details Section -->
-        <section id="reservation-details">
-            <div class="reservation-header">
-                <span>Seat Number</span>
-                <span>Venue</span>
-                <span>Date of Request</span>
-                <span>Date of Reservation</span>
-            </div>
+    <!-- Reservation Details Section -->
+    <section id="reservation-details">
+        <div class="reservation-header">
+            <span>Seat Number</span>
+            <span>Venue</span>
+            <span>Date of Request</span>
+            <span>Date of Reservation</span>
+        </div>
 
-            <!-- Sample rows -->
+        {{#each reservations}}
             <div class="reservation-row">
-                <span>A01</span>
-                <span>GK101A</span>
-                <span>February 6, 2025 18:00:00</span>
-                <span>February 7, 2025 07:00:00</span>
+                <span>{{seat}}</span>
+                <span>{{venue}}</span>
+                <span>{{requestDate}}</span>
+                <span>{{reservationDate}}</span>
             </div>
-            <div class="reservation-row">
-                <span>A02</span>
-                <span>GK101B</span>
-                <span>February 6, 2025 19:00:00</span>
-                <span>February 7, 2025 08:00:00</span>
-            </div>
-            <div class="reservation-row">
-                <span>A03</span>
-                <span>GK102A</span>
-                <span>February 7, 2025 09:00:00</span>
-                <span>February 8, 2025 10:00:00</span>
-            </div>
-            <div class="reservation-row">
-                <span>A04</span>
-                <span>GK102B</span>
-                <span>February 8, 2025 11:00:00</span>
-                <span>February 9, 2025 12:00:00</span>
-            </div>
-            <div class="reservation-row">
-                <span>A05</span>
-                <span>GK103A</span>
-                <span>February 9, 2025 13:00:00</span>
-                <span>February 10, 2025 14:00:00</span>
-            </div>
-        </section>
-    </main>
+        {{/each}}
+    </section>
+</main>
 </body>
 
 </html>
