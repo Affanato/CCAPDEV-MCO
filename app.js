@@ -27,8 +27,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.engine('hbs', exphbs.engine({
     extname: '.hbs',
     defaultLayout: 'main',
-    layoutsDir: path.join(__dirname, 'views/layouts'),
-    partialsDir: path.join(__dirname, 'views/partials')
+    layoutsDir: path.join(__dirname, 'views', 'layouts'),  // ✅ Ensures layout files are in the right folder
+    partialsDir: path.join(__dirname, 'views', "partials") // ✅ Points to Partials
 }));
 
 app.set('view engine', 'hbs');
@@ -45,7 +45,7 @@ mongoose.connect(process.env.MONGO_URI, {
     });
 
 // Use Routes
-app.use('/', indexRoutes);
+// app.use('/', indexRoutes);
 app.use('/api/users', userRoutes); // API routes for user handling
 app.use('/api/seats', seatRoutes); // API routes for seat reservations
 
@@ -53,6 +53,14 @@ app.use('/api/seats', seatRoutes); // API routes for seat reservations
 app.use((err, req, res, next) => {
     console.error(err.stack);
     res.status(500).send('Something went wrong!');
+});
+
+// Render the landing page and specify that it's the homepage (to conditionally hide header)
+app.get('/', (req, res) => {
+    res.render('landing_page', {isLandingPage: true}); 
+});
+app.get('/login', (req, res) => {
+    res.render('login', {extraCSS: '<link rel="stylesheet" href="/login.css">'});  // ✅ Make sure login.hbs is inside /views/layouts
 });
 
 // Start the server
