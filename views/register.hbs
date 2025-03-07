@@ -29,14 +29,14 @@
                     </div>
                 </div>
             </div>
-            <input type="text" name="firstname" id="first" placeholder="First Name" class="text">
-            <input type="text" name="lastname" id="last" placeholder="Last Name" class="text">
-            <input type="email" name="email" id="email" placeholder="Email Address" class="text">
-            <input type="password" name="password" id="password" placeholder="Password" class="text">
+            <input type="text" name="firstname" id="first" placeholder="First Name" class="text" required>
+            <input type="text" name="lastname" id="last" placeholder="Last Name" class="text" required>
+            <input type="email" name="email" id="email" placeholder="Email Address" class="text" required>
+            <input type="password" name="password" id="password" placeholder="Password" class="text" required>
             <div id="label">
                 <label for="verify-password">Verify Password</label> <!-- Corrected label association -->
             </div>
-            <input type="password" name="verifyPassword" id="verify-password" placeholder="Verify Password" class="text"> <!-- Corrected ID and name -->
+            <input type="password" name="verifyPassword" id="verify-password" placeholder="Verify Password" class="text" required> <!-- Corrected ID and name -->
             <button type="submit">Register</button>
         </form>
     </section>

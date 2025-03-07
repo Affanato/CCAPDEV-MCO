@@ -48,6 +48,8 @@ mongoose.connect(process.env.MONGO_URI, {
 // app.use('/', indexRoutes);
 app.use('/api/users', userRoutes); // API routes for user handling
 app.use('/api/seats', seatRoutes); // API routes for seat reservations
+app.use(express.urlencoded({ extended: true }));  // Handles form data
+app.use(express.json());  // Allows handling JSON data, if needed
 
 // Error handling middleware
 app.use((err, req, res, next) => {
@@ -109,6 +111,28 @@ app.get('/search-results', (req, res) => {
     res.render('search_results', {
         extraCSS: '<link rel="stylesheet" href="/search_results.css">'
     });
+});
+
+app.post('/register', (req, res) => {
+    const { firstname, lastname, email, password, verifyPassword, classification } = req.body;
+
+    // Validate form inputs
+    if (!firstname || !lastname || !email || !password || !verifyPassword || !classification) {
+        return res.status(400).send("All fields are required");
+    }
+
+    // Check if passwords match
+    if (password !== verifyPassword) {
+        return res.status(400).send("Passwords do not match");
+    }
+
+    // For now, just log the user data (replace with actual DB logic)
+    console.log("New user registered:", { firstname, lastname, email, classification });
+
+    // You can add logic here to save the user to the database if needed
+
+    // After successful registration, redirect to login page or show a success message
+    res.redirect('/login'); // Redirect to login after successful registration
 });
 
 // Start the server
