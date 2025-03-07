@@ -3,6 +3,8 @@ const mongoose = require('mongoose');
 const dotenv = require('dotenv');
 const path = require('path');
 const exphbs = require('express-handlebars');
+const helmet = require('helmet');
+const cors = require('cors');
 
 dotenv.config();
 
@@ -12,7 +14,9 @@ const indexRoutes = require('./routes/index'); // Import the main routes
 
 const app = express();
 
-// Middleware for JSON and URL-encoded data
+// Middleware for security and JSON URL encoding
+app.use(helmet());
+app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
@@ -22,9 +26,9 @@ app.use(express.static(path.join(__dirname, 'public')));
 // Setup Handlebars as the view engine
 app.engine('hbs', exphbs.engine({
     extname: '.hbs',
-    defaultLayout: 'main', // Use main.hbs as the default layout
-    layoutsDir: path.join(__dirname, 'views/layouts'), // Directory for layout files
-    partialsDir: path.join(__dirname, 'views/partials') // Directory for reusable components
+    defaultLayout: 'main',
+    layoutsDir: path.join(__dirname, 'views/layouts'),
+    partialsDir: path.join(__dirname, 'views/partials')
 }));
 
 app.set('view engine', 'hbs');
@@ -35,12 +39,21 @@ mongoose.connect(process.env.MONGO_URI, {
     useNewUrlParser: true,
     useUnifiedTopology: true
 }).then(() => console.log("MongoDB Connected"))
-    .catch(err => console.log("DB Connection Error:", err));
+    .catch(err => {
+        console.error("DB Connection Error:", err);
+        process.exit(1); // Exit if MongoDB connection fails
+    });
 
 // Use Routes
 app.use('/', indexRoutes);
 app.use('/api/users', userRoutes); // API routes for user handling
 app.use('/api/seats', seatRoutes); // API routes for seat reservations
+
+// Error handling middleware
+app.use((err, req, res, next) => {
+    console.error(err.stack);
+    res.status(500).send('Something went wrong!');
+});
 
 // Start the server
 const PORT = process.env.PORT || 3000;
