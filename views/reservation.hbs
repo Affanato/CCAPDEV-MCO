@@ -1,19 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://fonts.googleapis.com/css2?family=Krona+One&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="reservation.css">
-    <title>Lambda Lab Reservation</title>
-</head>
-
-<body>
-
-<main>
+    {{!-- reservation.hbs --}}
+    
     <section id="reservation-container">
-        <form id="reservation-form" action="" method="POST">
+        <form id="reservation-forms" action="" method="POST">
             <!-- Venue Selection Panel -->
             <div id="venue-panel" class="reservation-panel">
                 <span>Venue</span>
@@ -25,17 +13,14 @@
                     </div>
                     <div id="venue-inputs">
                         <select name="building" id="building" class="select" required>
-                            <option value="goks">Gokongwei</option>
-                            <option value="andrew">Andrew</option>
-                            <option value="st_la_salle">St. La Salle</option>
+                            {{#each buildings}}
+                                <option value="{{this.value}}">{{this.name}}</option>
+                            {{/each}}
                         </select>
                         <select name="room" id="room" class="select" required>
-                            <option value="GK104">GK104</option>
-                            <option value="GK103">GK103</option>
-                            <option value="AG1905">AG1905</option>
-                            <option value="AG1906">AG1906</option>
-                            <option value="LS319">LS319</option>
-                            <option value="LS226">LS226</option>
+                            {{#each rooms}}
+                                <option value="{{this.value}}">{{this.name}}</option>
+                            {{/each}}
                         </select>
                     </div>
                 </div>
@@ -47,27 +32,19 @@
                 <hr>
                 <div id="calendar-container">
                     <div id="month">
-                        <img src="../public/Assets/leftarrow.png" alt="Previous Month" class="arrow-icon">
-                        <span>February</span>
-                        <img src="../public/Assets/rightarrow.png" alt="Next Month" class="arrow-icon">
+                        <img src="/Assets/leftarrow.png" alt="Previous Month" class="arrow-icon">
+                        <span>{{currentMonth}}</span>
+                        <img src="/Assets/rightarrow.png" alt="Next Month" class="arrow-icon">
                     </div>
                     <div id="week">
-                        <div class="day">Su</div>
-                        <div class="day">Mo</div>
-                        <div class="day">Tu</div>
-                        <div class="day">We</div>
-                        <div class="day">Th</div>
-                        <div class="day">Fr</div>
-                        <div class="day">Sa</div>
+                        {{#each weekDays}}
+                            <div class="day">{{this}}</div>
+                        {{/each}}
                     </div>
                     <div id="days">
-                        <!-- Example for Dates -->
-                        <button class="date">28</button>
-                        <button class="date">29</button>
-                        <button class="date">1</button>
-                        <button class="date">2</button>
-                        <button class="date">3</button>
-                        <!-- Add more buttons as needed -->
+                        {{#each availableDates}}
+                            <button class="date">{{this}}</button>
+                        {{/each}}
                     </div>
                 </div>
             </div>
@@ -77,11 +54,9 @@
                 <span>Time</span>
                 <hr>
                 <select name="time" id="time" class="select" required>
-                    <option value="7:30">7:30 AM</option>
-                    <option value="8:00">8:00 AM</option>
-                    <option value="8:30">8:30 AM</option>
-                    <option value="9:00">9:00 AM</option>
-                    <!-- Add more options as needed -->
+                    {{#each times}}
+                        <option value="{{this}}">{{this}}</option>
+                    {{/each}}
                 </select>
             </div>
 
@@ -93,13 +68,13 @@
     <section id="reservation-display">
         <section id="information-display">
             <div id="venue-display">
-                <span>GK101A</span>
+                <span>{{selectedRoom}}</span>
             </div>
             <div id="date-display">
-                <span>February 6, 2025</span>
+                <span>{{selectedDate}}</span>
             </div>
             <div id="time-display">
-                <span>6:00 PM</span>
+                <span>{{selectedTime}}</span>
             </div>
         </section>
 
@@ -108,23 +83,14 @@
             <div id="whiteboard">Board</div>
             <section id="seat-layout">
                 <form id="seat-form" action="" method="POST">
-                    <div class="column">
-                        <input type="button" value="Seat 1">
-                        <input type="button" value="Seat 2">
-                        <input type="button" value="Seat 3">
-                        <!-- More seats here -->
-                    </div>
-                    <div class="column">
-                        <input type="button" value="Seat 4">
-                        <input type="button" value="Seat 5">
-                        <input type="button" value="Seat 6" class="reserved">
-                        <!-- More seats here -->
-                    </div>
-                    <div class="column">
-                        <input type="button" value="Seat 7">
-                        <input type="button" value="Seat 8" class="selected">
-                        <!-- More seats here -->
-                    </div>
+                    {{#each seatColumns}}
+                        <div class="column">
+                            {{#each this}}
+                                <input type="button" value="" class="{{status}}">
+                                {{!-- <input type="button" value="Seat {{seatNumber}}" class="{{status}}"> --}}
+                            {{/each}}
+                        </div>
+                    {{/each}}
                 </form>
             </section>
         </section>
@@ -136,7 +102,3 @@
             <div><input type="button" id="selected">Selected</div>
         </section>
     </section>
-</main>
-</body>
-
-</html>
