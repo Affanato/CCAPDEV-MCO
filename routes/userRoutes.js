@@ -1,29 +1,39 @@
 const express = require('express');
-const router = express.Router();
+const bcrypt = require('bcrypt');
 const User = require('../models/User');
 
+const router = express.Router();
+
+// Handle user registration
 router.post('/register', async (req, res) => {
     try {
-        const { firstName, lastName, email, password, classification } = req.body;
+        const { classification, firstname, lastname, email, password, verifyPassword } = req.body;
 
-        const existingUser = await User.findOne({ email });
-        if (existingUser) return res.status(400).json({ message: "Email already in use" });
+        // Check if passwords match
+        if (password !== verifyPassword) {
+            return res.status(400).send("Passwords do not match!");
+        }
 
-        const newUser = new User({ firstName, lastName, email, password, classification });
+        // Hash the password
+        const salt = await bcrypt.genSalt(10);
+        const hashedPassword = await bcrypt.hash(password, salt);
+
+        // Create new user
+        const newUser = new User({
+            classification,
+            firstname,
+            lastname,
+            email,
+            password: hashedPassword
+        });
+
+        // Save user to database
         await newUser.save();
 
-        res.status(201).json({ message: "User registered successfully!" });
+        res.status(201).send("User registered successfully!");
     } catch (error) {
-        res.status(500).json({ message: "Server error", error });
-    }
-});
-
-router.get('/', async (req, res) => {
-    try {
-        const users = await User.find();
-        res.json(users);
-    } catch (error) {
-        res.status(500).json({ message: "Server error" });
+        console.error(error);
+        res.status(500).send("Internal Server Error");
     }
 });
 

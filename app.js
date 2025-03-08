@@ -142,26 +142,29 @@ app.get('/search-results', (req, res) => {
     });
 });
 
-app.post('/register', (req, res) => {
-    const { firstname, lastname, email, password, verifyPassword, classification } = req.body;
+const User = require('./models/User'); // Import User model
 
-    // Validate form inputs
-    if (!firstname || !lastname || !email || !password || !verifyPassword || !classification) {
-        return res.status(400).send("All fields are required");
+app.post('/register', async (req, res) => {
+    try {
+        const { firstname, lastname, email, classification, password } = req.body;
+
+        // Create a new user
+        const newUser = new User({
+            firstname,
+            lastname,
+            email,
+            classification,
+            password // Make sure you're hashing passwords before saving
+        });
+
+        await newUser.save(); // This actually saves the user to MongoDB
+
+        console.log("New user registered:", newUser);
+        res.send("User registered successfully!");
+    } catch (error) {
+        console.error("Error registering user:", error);
+        res.status(500).send("Server error");
     }
-
-    // Check if passwords match
-    if (password !== verifyPassword) {
-        return res.status(400).send("Passwords do not match");
-    }
-
-    // For now, just log the user data (replace with actual DB logic)
-    console.log("New user registered:", { firstname, lastname, email, classification });
-
-    // You can add logic here to save the user to the database if needed
-
-    // After successful registration, redirect to login page or show a success message
-    res.redirect('/login'); // Redirect to login after successful registration
 });
 
 // Start the server
