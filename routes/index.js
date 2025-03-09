@@ -42,6 +42,17 @@ router.get('/login', (req, res) => {
     });  
 });
 
+// Logout Route
+router.get('/logout', (req, res) => {
+    req.session.destroy(err => {
+        if (err) {
+            console.error(err);
+            return res.status(500).send("Failed to log out.");
+        }
+        res.redirect('/login');
+    });
+});
+
 // Reservation Route
 router.get('/reservation', (req, res) => {
     res.render('reservation', {
@@ -77,9 +88,14 @@ router.get('/reservation', (req, res) => {
 
 // Profile Route (GET)
 router.get('/profile', (req, res) => {
+    if (!req.session.user) {
+        return res.redirect('/login');
+    }
+
     res.render('profile', {
-        cssFile: "profile.css",  
-        title: "Lambda Lab Profile"
+        cssFile: "profile_styles.css",  
+        title: "Lambda Lab Profile",
+        userName: req.session.user.name
     });
 });
 

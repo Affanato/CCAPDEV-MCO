@@ -3,6 +3,7 @@ const mongoose = require('mongoose');
 const dotenv = require('dotenv');
 const path = require('path');
 const exphbs = require('express-handlebars');
+const session = require('express-session');
 
 dotenv.config();
 
@@ -12,19 +13,32 @@ const indexRoutes = require('./routes/index'); // Import the main routes
 
 const app = express();
 
+// Session 
+app.use(session({
+    secret: 'lambda_lab_secret',
+    resave: false,
+    saveUninitialized: false,
+    cookie: { secure: false } // true if HTTPS
+}));
+
 // Middleware 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.use((req, res, next) => {
+    res.locals.user = req.session.user || null;
+    next();
+});
 
 // Serve static files (CSS, JS, images)
 app.use(express.static(path.join(__dirname, 'public')));
+
 
 // Setup Handlebars as the view engine
 app.engine('hbs', exphbs.engine({
     extname: '.hbs',
     defaultLayout: 'main',
-    layoutsDir: path.join(__dirname, 'views', 'layouts'),  // ✅ Ensures layout files are in the right folder
-    partialsDir: path.join(__dirname, 'views', "partials") // ✅ Points to Partials
+    layoutsDir: path.join(__dirname, 'views', 'layouts'),  // Ensures layout files are in the right folder
+    partialsDir: path.join(__dirname, 'views', "partials") // Points to Partials
 }));
 
 app.set('view engine', 'hbs');
