@@ -3,8 +3,6 @@ const mongoose = require('mongoose');
 const dotenv = require('dotenv');
 const path = require('path');
 const exphbs = require('express-handlebars');
-const helmet = require('helmet');
-const cors = require('cors');
 
 dotenv.config();
 
@@ -14,9 +12,7 @@ const indexRoutes = require('./routes/index'); // Import the main routes
 
 const app = express();
 
-// Middleware for security and JSON URL encoding
-app.use(helmet());
-app.use(cors());
+// Middleware 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
@@ -99,7 +95,6 @@ app.get('/reservation', (req, res) => {
     });
 });
 
-
 app.get('/home', (req, res) => {
     res.render('landing_page',
         {isLandingPage: true, cssFile:"landing_page.css"
@@ -138,7 +133,6 @@ app.get('/search-results', (req, res) => {
         cssFile: "search_results.css"
     });
 });
-
 
 // Start the server
 const PORT = process.env.PORT || 3000;
