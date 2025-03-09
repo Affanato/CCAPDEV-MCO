@@ -1,11 +1,10 @@
 const express = require('express');
-const bcrypt = require('bcrypt');
 const User = require('../models/User');
 
 const router = express.Router();
 
 // Handle user registration
-router.post('/register', async (req, res) => {
+router.post('/', async (req, res) => {
     try {
         const { classification, firstname, lastname, email, password, verifyPassword } = req.body;
 
@@ -14,17 +13,13 @@ router.post('/register', async (req, res) => {
             return res.status(400).send("Passwords do not match!");
         }
 
-        // Hash the password
-        const salt = await bcrypt.genSalt(10);
-        const hashedPassword = await bcrypt.hash(password, salt);
-
         // Create new user
         const newUser = new User({
             classification,
             firstname,
             lastname,
             email,
-            password: hashedPassword
+            password
         });
 
         // Save user to database

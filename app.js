@@ -45,11 +45,8 @@ mongoose.connect(process.env.MONGO_URI, {
     });
 
 // Use Routes
-// app.use('/', indexRoutes);
-app.use('/api/users', userRoutes); // API routes for user handling
+app.use('/register', userRoutes); // API routes for user handling
 app.use('/api/seats', seatRoutes); // API routes for seat reservations
-app.use(express.urlencoded({ extended: true }));  // Handles form data
-app.use(express.json());  // Allows handling JSON data, if needed
 
 // Error handling middleware
 app.use((err, req, res, next) => {
@@ -142,30 +139,6 @@ app.get('/search-results', (req, res) => {
     });
 });
 
-const User = require('./models/User'); // Import User model
-
-app.post('/register', async (req, res) => {
-    try {
-        const { firstname, lastname, email, classification, password } = req.body;
-
-        // Create a new user
-        const newUser = new User({
-            firstname,
-            lastname,
-            email,
-            classification,
-            password // Make sure you're hashing passwords before saving
-        });
-
-        await newUser.save(); // This actually saves the user to MongoDB
-
-        console.log("New user registered:", newUser);
-        res.send("User registered successfully!");
-    } catch (error) {
-        console.error("Error registering user:", error);
-        res.status(500).send("Server error");
-    }
-});
 
 // Start the server
 const PORT = process.env.PORT || 3000;
