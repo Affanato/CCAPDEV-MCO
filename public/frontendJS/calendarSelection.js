@@ -3,7 +3,7 @@ const daysPerMonth = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
 const currentMonth = document.querySelector("#currentMonth")
 
 let date = new Date(), 
-curMonth = date.getMonth() - 1
+curMonth = date.getMonth()
 
 const monthSelection = document.querySelector("#month")
 monthSelection.value = curMonth

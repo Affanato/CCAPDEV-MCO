@@ -1,12 +1,12 @@
 const halls = document.querySelector("#building")
 const rooms = document.querySelector("#room")
 
-halls.value = "goks"
+halls.value = "Gokongwei"
 
 const roomDirectory = {
-    goks: ["GK101A", "GK304A", "GK304B"],
-    andrew: ["AG702", "AG1904"],
-    st_la_salle: ["LS209", "LS311"]
+    "Gokongwei": ["GK101A", "GK304A", "GK304B"],
+    "Andrew": ["AG702", "AG1904"],
+    "St. La Salle": ["LS209", "LS311"]
 }
 
 //change displayed rooms based on current hall
