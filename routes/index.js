@@ -64,10 +64,6 @@ router.get('/reservation', (req, res) => {
         rooms: [
             { value: "GK104", name: "GK104" },
             { value: "GK103", name: "GK103" },
-            { value: "AG1905", name: "AG1905" },
-            { value: "AG1906", name: "AG1906" },
-            { value: "LS319", name: "LS319" },
-            { value: "LS226", name: "LS226" }
         ],
         currentMonth: "February",
         weekDays: ["Su", "Mo", "Tu", "We", "Th", "Fr", "Sa"],
