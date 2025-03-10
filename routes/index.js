@@ -57,9 +57,9 @@ router.get('/logout', (req, res) => {
 router.get('/reservation', (req, res) => {
     res.render('reservation', {
         buildings: [
-            { value: "goks", name: "Gokongwei" },
-            { value: "andrew", name: "Andrew" },
-            { value: "st_la_salle", name: "St. La Salle" }
+            { value: "Gokongwei", name: "Gokongwei" },
+            { value: "Andrew", name: "Andrew" },
+            { value: "St. La Salle", name: "St. La Salle" }
         ],
         rooms: [
             { value: "GK104", name: "GK104" },
@@ -73,9 +73,9 @@ router.get('/reservation', (req, res) => {
             "12:00 PM", "12:30 PM", "1:00 PM", "1:30 PM", "2:00 PM", "2:30 PM", "3:00 PM", "3:30 PM", "4:00 PM",
             "4:30 PM", "5:00 PM", "5:30 PM", "6:00 PM", "6:30 PM", "7:00 PM"
         ],
-        selectedRoom: "GK101A",
-        selectedDate: "February 6, 2025",
-        selectedTime: "6:00 PM",
+        selectedRoom: "GK104",
+        selectedDate: "March 10, 2025",
+        selectedTime: "7:30 PM",
         seatColumns: [
             [{ seatNumber: 1, status: "" }, { seatNumber: 2, status: "" }, { seatNumber: 3, status: "reserved" }, { seatNumber: 4, status: "" }, { seatNumber: 5, status: "" }, { seatNumber: 6, status: "" }, { seatNumber: 7, status: "" }, { seatNumber:8, status: "" }, { seatNumber: 9, status: "" }, { seatNumber: 10, status: "" }, { seatNumber: 11, status: "" }, { seatNumber: 12, status: "" }, { seatNumber: 13, status: "" }, { seatNumber: 14, status: "" }, { seatNumber: 15, status: "" }, { seatNumber: 16, status: "" }, { seatNumber: 17, status: "" }, { seatNumber: 18, status: "" }],
             [{ seatNumber: 19, status: "" }, { seatNumber: 20, status: "" }, { seatNumber: 21, status: "" }, { seatNumber: 22, status: "selected" }, { seatNumber: 23, status: "selected" }, { seatNumber: 24, status: "" }, { seatNumber: 25, status: "" }, { seatNumber: 26, status: "" }, { seatNumber: 27, status: "" }, { seatNumber: 28, status: "" }, { seatNumber: 29, status: "" }, { seatNumber: 30, status: "" }, { seatNumber: 31, status: "" }, { seatNumber: 32, status: "" }, { seatNumber: 33, status: "" }, { seatNumber: 34, status: "" }, { seatNumber: 35, status: "" }, { seatNumber: 36, status: "" }],
