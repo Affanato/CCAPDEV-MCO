@@ -6,6 +6,7 @@ let date = new Date(),
 curMonth = date.getMonth() - 1
 
 const monthSelection = document.querySelector("#month")
+monthSelection.value = curMonth
 const generateMonthOptions = () => {
     for(let i = curMonth; i < 12; i++){
         const newMonth = document.createElement("option")
