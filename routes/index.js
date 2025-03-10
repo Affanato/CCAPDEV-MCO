@@ -20,9 +20,30 @@ router.get('/home', (req, res) => {
 
 // About Route
 router.get('/about', (req, res) => {
+
+    const teamMembers = [
+        {
+            name: "Nio Tujan",
+            bio: "The classic \"I’ll do it later\" coder who somehow pulls off miracles at the last minute. Whether it's a machine learning model, a web app, or a random side project that nobody asked for, Nio thrives under pressure—mostly because that’s when he actually starts working. His desktop is a mess of folders labeled \"Final_Real_Final\" and \"FixThisLater,\" but despite the chaos, he always delivers. Loves problem-solving, hates unnecessary documentation, and will spend hours optimizing code that was already working fine."
+        },
+        {
+            name: "Renz Tabuzo",
+            bio: "If there’s a weird bug, Renz is the guy who somehow figures it out—usually after hours of trial and error (or just one lucky Stack Overflow post). He’s fascinated by cybersecurity, networking, and all things backend, but ironically, he’s also the one who gets locked out of his own accounts the most. Always up for a deep dive into ethical hacking or system security, but also somehow finds time to game. Prefers dark mode, thinks light mode users are \"built different,\" and has an endless list of unfinished projects."
+        },
+        {
+            name: "Kelvin Alviar",
+            bio: "The data and AI enthusiast of the group, Kelvin loves experimenting with machine learning models, even if they take hours to run. He’s the one who actually enjoys working with statistics and making sense of massive datasets while the rest of the group stares in confusion. Passionate about Python, skeptical about JavaScript, and will defend pandas and NumPy with his life. If he’s not coding, he’s probably reading up on AI trends or wondering why his model isn’t training properly."
+        },
+        {
+            name: "Xander Diamante",
+            bio: "The team’s UI/UX mastermind who refuses to let anything look ugly. While everyone else is focused on making things work, Xander is making sure they don’t look like they came from the early 2000s. Figma, Tailwind, and CSS animations are his playground, and he has a strong dislike for inline styles. Will spend hours adjusting margins and fonts but avoids backend work like the plague. If he's not designing, he’s either gaming, binging tutorials, or judging bad UI in random apps."
+        }
+    ];
+
     res.render('about', {
         cssFile: "about.css", 
-        title: "About Us"
+        title: "About Us",
+        teamMembers
     });
 });
 
