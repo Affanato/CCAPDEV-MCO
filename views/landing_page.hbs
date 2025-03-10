@@ -4,7 +4,11 @@
 
 <section id="header">
     <h1>&#411; Lambda Hub</h1>
-    <a href="/login"><button>Login</button></a>
+    {{#if user}}
+    <a href="/profile"><button>Profile</button></a>
+    {{else}}
+        <a href="/login"><button>Login</button></a>
+    {{/if}}
 </section>
 
 <section>
