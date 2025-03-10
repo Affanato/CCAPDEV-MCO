@@ -95,7 +95,7 @@ router.get('/profile', (req, res) => {
     res.render('profile', {
         cssFile: "profile_styles.css",  
         title: "Lambda Lab Profile",
-        userName: req.session.user.name
+        userName: req.session.user.name || req.query.name
     });
 });
 
