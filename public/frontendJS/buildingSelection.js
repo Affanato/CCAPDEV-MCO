@@ -1,6 +1,8 @@
 const halls = document.querySelector("#building")
 const rooms = document.querySelector("#room")
 
+halls.value = "goks"
+
 const roomDirectory = {
     goks: ["GK101A", "GK304A", "GK304B"],
     andrew: ["AG702", "AG1904"],
