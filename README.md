@@ -1,2 +1,12 @@
-Go to landing_page then run landing_page.html to run the website front-end!
+1. Install Dependencies
 
+npm install
+
+2. Start Server
+
+node app.js
+
+3. Access the App
+
+Open your browser and go to:
+http://localhost:3000
