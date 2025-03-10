@@ -4,40 +4,43 @@ document.addEventListener("DOMContentLoaded", function () {
     const passwordInput = document.getElementById("password");
     const errorMessage = document.getElementById("error-message");
 
-    loginForm.addEventListener("submit", async function (event) {
-        event.preventDefault(); // Prevent default form submission
+    if (loginForm) {
+        loginForm.addEventListener('submit', async function (event) {
+            event.preventDefault(); // Prevent default form submission
 
-        const email = emailInput.value.trim();
-        const password = passwordInput.value.trim();
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
 
-        // Basic validation
-        if (!email || !password) {
-            errorMessage.textContent = "Please fill in both fields.";
-            errorMessage.style.display = "block";
-            return;
-        }
+            // Basic validation
+            if (!email || !password) {
+                errorMessage.textContent = "Please fill in both fields.";
+                errorMessage.style.display = "block";
+                return;
+            }
 
-        try {
-            const response = await fetch("/login", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json"
-                },
-                body: JSON.stringify({ email, password })
-            });
+            try {
+                const response = await fetch("/login", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify({ email, password })
+                });
 
-            const data = await response.json();
+                const data = await response.json();
 
-            if (response.ok) {
-                window.location.href = "/profile"; // Redirect on successful login
-            } else {
-                errorMessage.textContent = data.message || "Invalid email or password.";
+                if (response.ok) {
+                    window.location.href = "/profile"; // Redirect on successful login
+                } else {
+                    errorMessage.textContent = data.message || "Invalid email or password.";
+                    errorMessage.style.display = "block";
+                }
+            } catch (error) {
+                console.error("Error during login:", error);
+                errorMessage.textContent = "Something went wrong. Please try again later.";
                 errorMessage.style.display = "block";
             }
-        } catch (error) {
-            console.error("Error during login:", error);
-            errorMessage.textContent = "Something went wrong. Please try again later.";
-            errorMessage.style.display = "block";
-        }
-    });
+        });
+    }
+
 });

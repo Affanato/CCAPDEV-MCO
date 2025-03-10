@@ -3,7 +3,7 @@ const User = require('../models/User');
 const router = express.Router();
 
 // Handle user registration
-router.post('/', async (req, res) => {
+router.post('/register', async (req, res) => {
     try {
         const { classification, firstname, lastname, email, password, verifyPassword } = req.body;
         // Check if passwords match
@@ -53,8 +53,8 @@ router.post('/login', async (req, res) => {
             email: user.email
         };
 
-// Redirect to profile with name as query parameter
-res.redirect(`/profile?name=${encodeURIComponent(user.firstname + ' ' + user.lastname)}`);
+        // Redirect to profile with name as query parameter
+        res.redirect(`/profile?name=${encodeURIComponent(user.firstname + ' ' + user.lastname)}`);
     } catch (error) {
         console.error("Login Error:", error);
         res.status(500).json({ message: "Internal Server Error." });
