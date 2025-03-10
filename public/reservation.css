@@ -95,7 +95,7 @@ main {
 }
 
 #reservation-forms #venue-panel {
-    height: 15%;
+    height: 25%;
     flex-grow: 1;
     display: flex;
     flex-direction: column;
@@ -123,8 +123,8 @@ main {
 }
 
 #reservation-forms #date-panel {
-    height: 30%;
-    flex-grow: 4;
+    height: 20%;
+    flex-grow: .5;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -146,6 +146,10 @@ main {
     display: flex;
     justify-content: space-between;
     margin-bottom: .5rem;
+}
+
+#prevMonth, #nextMonth {
+    cursor: pointer;
 }
 
 #date-panel #week {
@@ -192,12 +196,35 @@ main {
     text-align: center;
 }
 
+#date-input-container {
+    display: flex;
+    justify-content: space-evenly;
+    width: 90%;
+}
+
+#date-labels, #date-inputs {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+#date-panel label {
+    margin: 5px 0; 
+}
+
+#date-panel select {
+    margin: 5px 0; 
+    padding: 5px 10px;
+    width: 90%;
+}
+
 #date-panel #calendar-container #days .not-part {
     color: grey
 }
 
 #reservation-forms #time-panel {
-    height: 10%;
+    height: 20%;
     flex-grow: .6;
     display: flex;
     flex-direction: column;

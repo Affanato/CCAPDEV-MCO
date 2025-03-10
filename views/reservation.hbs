@@ -30,11 +30,26 @@
             <div id="date-panel" class="reservation-panel">
                 <span>Date</span>
                 <hr>
-                <div id="calendar-container">
-                    <div id="month">
-                        <img src="/Assets/leftarrow.png" alt="Previous Month" class="arrow-icon">
-                        <span>{{currentMonth}}</span>
-                        <img src="/Assets/rightarrow.png" alt="Next Month" class="arrow-icon">
+                <div id="date-input-container">
+                    <div id="date-labels">
+                        <label for="month">Month</label>
+                        <label for="Day">Day</label>
+                </div>
+                <div id="date-inputs">
+                        <select name="month" id="month" class="select" required>
+                        </select>
+                        <select name="day" id="day" class="select" required>
+                             <option value="1" class="selectDate">1</option>
+                        </select>
+                </div>
+                </div>
+            </div>
+
+            {{!-- <div id="calendar-container">
+                    <div id="month">    
+                        <img src="/Assets/leftarrow.png" alt="Previous Month" class="arrow-icon" id="prevMonth">
+                        <span id="currentMonth">{{currentMonth}}</span>
+                        <img src="/Assets/rightarrow.png" alt="Next Month" class="arrow-icon" id="nextMonth">
                     </div>
                     <div id="week">
                         {{#each weekDays}}
@@ -46,8 +61,7 @@
                             <button class="date">{{this}}</button>
                         {{/each}}
                     </div>
-                </div>
-            </div>
+                </div> --}}
 
             <!-- Time Selection Panel -->
             <div id="time-panel" class="reservation-panel">
@@ -102,4 +116,5 @@
             <div><input type="button" id="selected">Selected</div>
         </section>
     </section>
-    <script src="/frontendJS/bookingSelector.js"></script>
+    <script src="/frontendJS/buildingSelection.js"></script>
+    <script src="/frontendJS/calendarSelection.js"></script>
