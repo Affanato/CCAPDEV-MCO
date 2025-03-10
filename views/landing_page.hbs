@@ -16,5 +16,11 @@
 </section>
 
 <section id="view-labs">
-    <a href="/reservation"><button>View Labs</button></a>
+    {{#if user}}
+    <a href="/reservation"><button id="view-labs-btn">View Labs</button></a>
+    {{else}}
+    <button id="view-labs-btn">View Labs</button>
+    {{/if}}
 </section>
+
+<script src="/frontendJS/landing.js"></script>

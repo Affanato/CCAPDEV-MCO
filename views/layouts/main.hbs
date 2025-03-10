@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="/{{cssFile}}">
     <title>{{title}}</title>
 </head>
-    <body>
+    <body data-user="{{user}}">
         {{!-- Show header only if it's NOT the landing page --}}
         {{#unless isLandingPage}}
         {{> header}}  {{!-- Uses the partial --}}
