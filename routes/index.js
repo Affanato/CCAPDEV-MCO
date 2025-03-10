@@ -100,9 +100,9 @@ router.get('/profile', (req, res) => {
 });
 
 // Profile Edit Route (GET)
-router.get('/profile/edit', (req, res) => {
+router.get('/profile_edit', (req, res) => {
     res.render('profile_edit', {
-        cssFile: "profile_edit.css",
+        cssFile: "profile_styles.css",
         title: "Lambda Lab Profile"
     });
 });

@@ -1,33 +1,31 @@
-    <main>
-        <!-- Profile Section -->
-        <section id="profile-section">
-            <div id="profile-card">
-                <div id="profile-image"></div>
-                <div id="profile-info">
-                    <h2>{{userName}}</h2>
-                    <p>{{user.bio}}</p>
-                </div>
+<!-- Profile Section -->
+    <section id="profile-section">
+        <div id="profile-card">
+            <div id="profile-image"></div>
+            <div id="profile-info">
+                <h2>{{userName}}</h2>
+                <p>{{user.bio}}</p>
             </div>
-            <a href="/profile/edit"><button id="edit-button">Edit Profile</button></a>
-        </section>
+        </div>
+        <a href="/profile_edit"><button id="edit-button">Edit Profile</button></a>
+    </section>
 
-        <!-- Reservation Details Section -->
-        <section id="reservation-details">
-            <div class="reservation-header">
-                <span>Seat Number</span>
-                <span>Venue</span>
-                <span>Date of Request</span>
-                <span>Date of Reservation</span>
+    <!-- Reservation Details Section -->
+    <section id="reservation-details">
+        <div class="reservation-header">
+            <span>Seat Number</span>
+            <span>Venue</span>
+            <span>Date of Request</span>
+            <span>Date of Reservation</span>
+        </div>
+
+        {{#each reservations}}
+            <div class="reservation-row">
+                <span>{{seat}}</span>
+                <span>{{venue}}</span>
+                <span>{{requestDate}}</span>
+                <span>{{reservationDate}}</span>
             </div>
-
-            {{#each reservations}}
-                <div class="reservation-row">
-                    <span>{{seat}}</span>
-                    <span>{{venue}}</span>
-                    <span>{{requestDate}}</span>
-                    <span>{{reservationDate}}</span>
-                </div>
-            {{/each}}
-        </section>
-    </main>
+        {{/each}}
+    </section>
 
