@@ -4,7 +4,11 @@
 
 <section id="header">
     <h1>&#411; Lambda Hub</h1>
-    <a href="/login"><button>Login</button></a>
+    {{#if user}}
+    <a href="/profile"><button>Profile</button></a>
+    {{else}}
+        <a href="/login"><button>Login</button></a>
+    {{/if}}
 </section>
 
 <section>
@@ -12,5 +16,11 @@
 </section>
 
 <section id="view-labs">
-    <a href="/reservation"><button>View Labs</button></a>
+    {{#if user}}
+    <a href="/reservation"><button id="view-labs-btn">View Labs</button></a>
+    {{else}}
+    <button id="view-labs-btn">View Labs</button>
+    {{/if}}
 </section>
+
+<script src="/frontendJS/landing.js"></script>

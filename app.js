@@ -61,7 +61,7 @@ mongoose.connect(process.env.MONGO_URI, {
     });
 
 // Use Routes
-app.use('/register', userRoutes); // API routes for user handling
+app.use('/', userRoutes); // For POST requests
 app.use('/api/seats', seatRoutes); // API routes for seat reservations
 app.use('/', indexRoutes); // Main routes (landing page, etc.)
 
