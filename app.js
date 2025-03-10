@@ -32,6 +32,12 @@ app.use((req, res, next) => {
 // Serve static files (CSS, JS, images)
 app.use(express.static(path.join(__dirname, 'public')));
 
+app.use('/js', (req, res, next) => {
+    if (req.path.endsWith('.js')) {
+        res.type('application/javascript'); 
+    }
+    next();
+});
 
 // Setup Handlebars as the view engine
 app.engine('hbs', exphbs.engine({
