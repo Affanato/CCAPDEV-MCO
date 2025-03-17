@@ -128,13 +128,31 @@ router.get('/profile_edit', (req, res) => {
     });
 });
 
+const teamMembers = [
+    { name: "Nio Tujan", bio: "Pressure-driven coder, master of last-minute miracles." },
+    { name: "Renz Tabuzo", bio: "Backend and cybersecurity enthusiast." },
+    { name: "Kelvin Alviar", bio: "Data and AI enthusiast, loves working with massive datasets." },
+    { name: "Xander Diamante", bio: "UI/UX designer who avoids ugly interfaces." }
+];
+
 // Search Results Page
 router.get('/search', (req, res) => {
+
+    const query = req.query.query.toLowerCase();
+
+    // Filter members by matching the query with name or bio
+    const filteredMembers = teamMembers.filter(member =>
+        member.name.toLowerCase().includes(query) || 
+        member.bio.toLowerCase().includes(query)
+    );
+
     res.render('search_results', {
-        cssFile: "search_results.css",
-        title: "Search Results Page"
+        cssFile: "search_styles.css",
+        title: "Search Results Page",
+        teamMembers: filteredMembers
     });
 });
+
 
 // Export the router to be used in app.js or other files
 module.exports = router;

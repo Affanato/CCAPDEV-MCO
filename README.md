@@ -1,8 +1,8 @@
-1. Install Dependencies
+1. Install Dependcies 
 
-npm install
+'npm install'
 
-2. Start Server
+2. Start Server 
 
 node app.js
 
