@@ -63,7 +63,8 @@ router.post('/login', async (req, res) => {
         req.session.user = {
             id: user._id,
             name: `${user.firstname} ${user.lastname}`,
-            email: user.email
+            email: user.email,
+            bio: user.bio
         };
 
         // Redirect to profile with name as query parameter
@@ -71,6 +72,25 @@ router.post('/login', async (req, res) => {
     } catch (error) {
         console.error("Login Error:", error);
         res.status(500).json({ message: "Internal Server Error." });
+    }
+});
+
+// Handle profile bio update
+router.post('/profile', async (req, res) => {
+    try {
+        const { bio } = req.body;
+
+        // Update the user's bio in the database
+        const user = await User.findByIdAndUpdate(req.session.user.id, { bio }, { new: true });
+
+        // Update the session with the new bio
+        req.session.user.bio = user.bio;
+
+        // Redirect back to the profile page
+        res.redirect('/profile');
+    } catch (error) {
+        console.error(error);
+        res.status(500).send('An error occurred while updating the profile.');
     }
 });
 

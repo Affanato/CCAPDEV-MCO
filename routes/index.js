@@ -1,5 +1,6 @@
 const express = require('express');
 const router = express.Router();
+const User = require('../models/User'); // Adjust the path if necessary
 
 // Homepage Route
 router.get('/', (req, res) => {
@@ -108,23 +109,33 @@ router.get('/reservation', (req, res) => {
 });
 
 // Profile Route (GET)
-router.get('/profile', (req, res) => {
+router.get('/profile', async (req, res) => {
     if (!req.session.user) {
         return res.redirect('/login');
     }
 
+    const user = await User.findById(req.session.user.id).lean();
+
     res.render('profile', {
         cssFile: "profile_styles.css",  
         title: "Lambda Lab Profile",
-        userName: req.session.user.name || req.query.name
+        userName: user.firstname + " " + user.lastname,
+        bio: user.bio || "No bio yet"// Pass the user's bio to the view
     });
 });
 
 // Profile Edit Route (GET)
-router.get('/profile_edit', (req, res) => {
+router.get('/profile_edit', async (req, res) => {
+    const user = await User.findById(req.session.user.id).lean();
+    
+    if (!user) {
+        return res.redirect('/profile'); // Redirect if user is not found
+    }
+
     res.render('profile_edit', {
         cssFile: "profile_styles.css",
-        title: "Lambda Lab Profile"
+        title: "Lambda Lab Profile",
+        user
     });
 });
 

@@ -1,9 +1,9 @@
-<!-- Profile Section -->
+{{!-- <!-- Profile Section -->
     <section id="profile-section">
         <div id="profile-card">
             <div id="profile-image"></div>
             <div id="profile-info">
-                <h2>{{user.name}}</h2>
+                <h2>{{user.firstname}} {{user.lastname}}</h2>
                 <textarea id="description" rows="5" style="width: 100%; font-size: 1.2em; border-radius: 0.5em; padding: 0.5em; border: 1px solid #ccc; resize: none;">
                     {{user.bio}}
                 </textarea>
@@ -12,4 +12,20 @@
         <form action="/profile" method="POST">
             <button type="submit" id="edit-button">Save Edits</button>
         </form>
-    </section>
+    </section> --}}
+
+<!-- Profile Section -->
+<section id="profile-section">
+    <div id="profile-card">
+        <div id="profile-image"></div>
+        <div id="profile-info">
+            <h2>{{user.firstname}} {{user.lastname}}</h2>
+
+            <!-- Form for editing bio -->
+            <form action="/profile" method="POST">
+                <textarea id="description" name="bio" rows="5" style="width: 100%; font-size: 1.2em; border-radius: 0.5em; padding: 0.5em; border: 1px solid #ccc; resize: none;">{{user.bio}}</textarea>
+                <button type="submit" id="edit-button">Save Edits</button>
+            </form>
+        </div>
+    </div>
+</section>

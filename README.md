@@ -1,4 +1,4 @@
-1. Install Dependcies 
+1. Install Dependencies 
 
 'npm install'
 
