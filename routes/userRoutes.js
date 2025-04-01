@@ -1,5 +1,6 @@
 const express = require('express');
 const User = require('../models/User');
+const bcrypt = require('bcrypt');
 const router = express.Router();
 
 // Handle user registration
@@ -10,13 +11,18 @@ router.post('/register', async (req, res) => {
         if (password !== verifyPassword) {
             return res.status(400).send("Passwords do not match!");
         }
-        // Create new user
+
+        // Hash the password
+        const salt = await bcrypt.genSalt(10);
+        const hashedPassword = await bcrypt.hash(password, salt);
+
+        // Create new user with hashed password
         const newUser = new User({
             classification,
             firstname,
             lastname,
             email,
-            password
+            password: hashedPassword // Store the hashed password
         });
         // Save user to database
         await newUser.save();
@@ -42,7 +48,14 @@ router.post('/login', async (req, res) => {
     try {
         const user = await User.findOne({ email });
 
-        if (!user || user.password !== password) {
+        if (!user) {
+            return res.status(401).json({ message: "Invalid email or password." });
+        }
+
+        // Compare the provided password with the hashed password in the database
+        const validPassword = await bcrypt.compare(password, user.password);
+
+        if (!validPassword) {
             return res.status(401).json({ message: "Invalid email or password." });
         }
 
