@@ -13,6 +13,11 @@ const SeatReservationSchema = new mongoose.Schema({
         required: true,
         index: true
     },
+    reqDate: {
+        type: Date,
+        required: true,
+        default: Date.now
+    },
     endDate: { type: Date, required: true },
     anon: { type: Boolean, required: true, default: false },
     user: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true },
