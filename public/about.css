@@ -4,7 +4,7 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    overflow: hidden;
+    overflow-x: hidden;
 }
 
 header {
@@ -53,11 +53,12 @@ main {
     height: 87vh;
     margin-top: 1.5%;
     display: flex;
+    flex-direction: column;
     justify-content: space-evenly;
     align-items: center;    
 }
 
-.card {
+/* .card {
     width: 22%;
     height: 80%;
     background-color: #A92231;
@@ -67,6 +68,47 @@ main {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+} */
+
+.team {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.card {
+    width: 20%;
+    height: 100%;
+    background-color: #A92231;
+    border-radius: 2em;
+    padding: 1em;
+    color: white;
+    font-family: krona one;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.card .photo {
+    width: 50%;
+    height: 100px;
+    border-radius: 50%;
+    background-color: rgb(180, 177, 177);
+    margin-bottom: 1em;
+}
+
+.card .name {
+    font-size: 1.5em;
+    margin-bottom: 0.5em;
+}
+
+.card .bio {
+    width: 85%;
+    height: 45%;
+    text-align:justify;
+    font-size: .65em;
+    font-family: krona one;
+    word-spacing: 3px;
 }
 
 .card div {
@@ -74,7 +116,7 @@ main {
     color: white;
 }
 
-.photo {
+/* .photo {
     width: 50%;
     height: 30%;
     border-radius: 50%;
@@ -94,4 +136,67 @@ main {
     font-size: .6em;
     font-family: krona one;
     word-spacing: 5px;
+} */
+
+section {
+    width: 100%;
+    margin: 2em 0;
+    text-align: center;
+}
+
+/* Team Section */
+.team-list {
+    display: flex;
+    justify-content: center;
+    gap: 2em;
+    flex-wrap: wrap; /* Ensures responsiveness */
+}
+
+/* Dependencies Section */
+.dependencies {
+    margin-top: 3em;
+}
+
+.dependencies h2 {
+    font-family: krona one;
+    font-size: 2em;
+    color: #0C0E23;
+    margin-bottom: 1em;
+}
+
+.dependency-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1.5em;
+}
+
+.dependency-card {
+    width: 20%;
+    background-color: #A92231;
+    border-radius: 1em;
+    padding: 1em;
+    color: white;
+    font-family: krona one;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.dependency-card:hover {
+    background-color: #EDDAC9;
+    color: #A92231;
+    transform: scale(1.05);
+    transition: all 0.3s ease;
+}
+
+.dependency-name {
+    font-size: 1.2em;
+    margin-bottom: 0.5em;
+}
+
+.dependency-version {
+    font-size: 1em;
+    color: #EDDAC9;
 }

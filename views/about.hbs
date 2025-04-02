@@ -1,7 +1,21 @@
-{{#each teamMembers}}
-    <section class="card">
-        <div class="photo"></div>
-        <div class="name">{{name}}</div>
-        <div class="bio">{{bio}}</div>
-    </section>
-{{/each}}
+<section class="team">
+    {{#each teamMembers}}
+        <div class="card">
+            <div class="photo"></div>
+            <div class="name">{{name}}</div>
+            <div class="bio">{{bio}}</div>
+        </div>
+    {{/each}}
+</section>
+
+<section class="dependencies">
+        <h2>Dependencies</h2>
+        <div class="dependency-list">
+            {{#each dependencies}}
+                <div class="dependency-card">
+                    <div class="dependency-name">{{name}}</div>
+                    <div class="dependency-version">Version: {{version}}</div>
+                </div>
+            {{/each}}
+        </div>
+</section>

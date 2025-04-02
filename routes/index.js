@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const User = require('../models/User'); // Adjust the path if necessary
+const packageJson = require('../package.json'); // path to package.json
 
 // Homepage Route
 router.get('/', (req, res) => {
@@ -41,10 +42,17 @@ router.get('/about', (req, res) => {
         }
     ];
 
+    // Extract dependencies from package.json
+    const dependencies = Object.entries(packageJson.dependencies).map(([name, version]) => ({
+        name,
+        version
+    }));
+
     res.render('about', {
         cssFile: "about.css", 
         title: "About Us",
-        teamMembers
+        teamMembers,
+        dependencies
     });
 });
 
