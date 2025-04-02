@@ -15,17 +15,32 @@ document.addEventListener("DOMContentLoaded", function () {
             // Parse time
             const [timeValue, modifier] = time.split(" ");
             let [hours, minutes] = timeValue.split(":");
-            hours = parseInt(hours);
-            minutes = parseInt(minutes || 0);
+            hours = parseInt(hours, 10);
+            minutes = parseInt(minutes || 0, 10);
 
             // Convert to 24h format
             if (modifier === "PM" && hours !== 12) hours += 12;
             if (modifier === "AM" && hours === 12) hours = 0;
 
+            if (isNaN(month) || isNaN(day) || isNaN(hours) || isNaN(minutes)) {
+                alert("Invalid date or time. Please check your inputs.");
+                return;
+            }
+
             // Create dates (month is 0-based!)
             const year = new Date().getFullYear();
-            const startDate = new Date(year, parseInt(month) - 1, parseInt(day), hours, minutes);
-            const endDate = new Date(startDate.getTime() + 30 * 60000); // 30 mins
+            const startDate = new Date(year, parseInt(month, 10) - 1, parseInt(day, 10), hours, minutes);
+            duration = 30;
+            //const endDate = new Date(startDate.getTime() + duration * 60000); // 30 mins
+
+            if (isNaN(startDate.getTime()) || isNaN(endDate.getTime())) {
+                alert("Invalid date format. Please try again.");
+                return;
+            }
+            
+            // Debugging logs
+            console.log("Start Date:", startDate);
+            console.log("End Date:", endDate);
 
             // Debug logs (optional)
             console.log("Frontend Date Values:", {
@@ -47,7 +62,9 @@ document.addEventListener("DOMContentLoaded", function () {
                         lab: room,
                         seat: "A1", // Temporary - replace with seat selection logic
                         resDate: startDate.toISOString(),
-                        endDate: endDate.toISOString()
+                        //endDate: endDate.toISOString()
+                        duration,
+                        anon: false // Assuming default, adjust if needed
                     })
                 });
 

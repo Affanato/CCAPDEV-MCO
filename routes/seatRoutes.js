@@ -18,9 +18,28 @@ router.post('/reserve', async (req, res) => {
         const { lab, seat, resDate, duration, anon } = req.body;
         const userId = req.session.user.id;
 
+        // Validate received resDate string before creating Date object
+        if (!resDate || typeof resDate !== 'string') {
+            return res.status(400).json({ message: "Invalid reservation date format received." });
+        }
+
         // Convert duration to end date
         const startDate = new Date(resDate);
+        if (isNaN(startDate.getTime())) {
+            return res.status(400).json({ message: "Invalid reservation date." });
+        }
+
+        // Validate duration
+        if (isNaN(numericDuration) || numericDuration <= 0) {
+            console.error("Invalid duration received:", duration);
+            return res.status(400).json({ message: "Invalid duration provided." });
+        }
+
         const endDate = new Date(startDate.getTime() + duration * 60000);
+        if (isNaN(endDate.getTime())) {
+            console.error("Invalid endDate calculation:", { startDate, duration: numericDuration, endDate });
+            return res.status(400).json({ message: "Could not calculate valid end date." });
+        }
 
         // Check for conflicts
         const existing = await SeatReservation.findOne({
