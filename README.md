@@ -42,6 +42,7 @@ The **Lambda Lab Reservation System** is a web application designed to facilitat
 ## Installation and Setup
 
 ### Prerequisites
+
 - [Node.js](https://nodejs.org/) (v16 or higher)
 - [MongoDB](https://www.mongodb.com/) (local or cloud instance)
 
@@ -53,7 +54,8 @@ The **Lambda Lab Reservation System** is a web application designed to facilitat
     cd CCAPDEV-MCO
 
 2. Install dependencies:
-    `npm` install
+
+    `npm install`
 
 3. Create a .env file in the root directory and add the following:
 
@@ -61,7 +63,8 @@ The **Lambda Lab Reservation System** is a web application designed to facilitat
     PORT=3000
 
 4. Start the server: 
-    http://localhost:3000
+
+    `node app.js`
 
 5. Open your browser and go to:
 
@@ -70,29 +73,29 @@ The **Lambda Lab Reservation System** is a web application designed to facilitat
 ## Project Structure 
 
 CCAPDEV-MCO/
-├── [app.js]                # Main application file
+├── app.js                # Main application file
 ├── .env                    # Environment variables
 ├── models/                 # Mongoose schemas
-│   ├── [SeatReservation.js]
-│   └── [User.js]
+│   ├── SeatReservation.js
+│   └── User.js
 ├── public/                 # Static assets (CSS, JS, images)
 │   ├── Assets/
 │   ├── frontendJS/
-│   ├── [about.css]
+│   ├── about.css
 │   ├── landing_page.css
 │   └── ...
 ├── routes/                 # Express routes
-│   ├── [index.js]
+│   ├── index.js
 │   ├── seatRoutes.js
-│   └── [userRoutes.js]
+│   └── userRoutes.js
 ├── views/                  # Handlebars templates
 │   ├── layouts/
 │   ├── partials/
-│   ├── [about.hbs]
+│   ├── about.hbs
 │   ├── landing_page.hbs
 │   └── ...
-├── [package.json]          # Project metadata and dependencies
-└── [README.md]             # Project documentation
+├── package.json          # Project metadata and dependencies
+└── README.md             # Project documentation
 
 
 ## Deployment 
