@@ -71,9 +71,9 @@ The **Lambda Lab Reservation System** is a web application designed to facilitat
     http://localhost:3000
 
 ## Project Structure 
-
+```
 CCAPDEV-MCO/
-├── app.js                # Main application file
+├── app.js                  # Main application file
 ├── .env                    # Environment variables
 ├── models/                 # Mongoose schemas
 │   ├── SeatReservation.js
@@ -96,7 +96,7 @@ CCAPDEV-MCO/
 │   └── ...
 ├── package.json          # Project metadata and dependencies
 └── README.md             # Project documentation
-
+```
 
 ## Deployment 
 
