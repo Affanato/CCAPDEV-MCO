@@ -98,4 +98,50 @@ router.post('/profile', async (req, res) => {
     }
 });
 
+// Search users
+router.get('/search', async (req, res) => {
+    try {
+        const { query } = req.query;
+        
+        if (!query) {
+            return res.render('search_result', {
+                cssFile: "search_styles.css",
+                title: "Search Results",
+                teamMembers: []
+            });
+        }
+
+        // Search for users by name or email
+        const users = await User.find({
+            $or: [
+                { firstname: { $regex: query, $options: 'i' } },
+                { lastname: { $regex: query, $options: 'i' } },
+                { email: { $regex: query, $options: 'i' } }
+            ]
+        }).select('firstname lastname email bio classification');
+
+        // Transform users into teamMembers format
+        const teamMembers = users.map(user => ({
+            name: `${user.firstname} ${user.lastname}`,
+            bio: user.bio || 'No bio available',
+            email: user.email,
+            classification: user.classification
+        }));
+
+        res.render('search_result', {
+            cssFile: "search_styles.css",
+            title: "Search Results",
+            teamMembers
+        });
+    } catch (error) {
+        console.error("Search Error:", error);
+        res.render('search_result', {
+            cssFile: "search_styles.css",
+            title: "Search Results",
+            teamMembers: [],
+            error: 'An error occurred during search'
+        });
+    }
+});
+
 module.exports = router;
