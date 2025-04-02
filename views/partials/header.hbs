@@ -1,13 +1,18 @@
 <header>
     <h1>&#411; Lambda Lab Hub</h1>
     <nav>
-        <input type="text" placeholder="Search...">
-        <a href="/home">Home</a>
-        <a href="/about">About</a>
-        {{#if user}}
-        <a href="/logout">Log out</a>
-        {{else}}
-        <a href="/login">Login</a>
-        {{/if}}
+        <form action="/search" method="GET" style="display: flex; width: 35%;">
+            <input type="text" name="query" placeholder="Search..." required style="width: 100%; padding: 8px 20px; border-radius: 20px; border: none; font-family: 'Krona One', sans-serif; font-size: 14px; background-color: white;">
+            <button type="submit" style="display: none;">Search</button>
+        </form>
+        <div style="display: flex; gap: 2em;">
+            <a href="/home">Home</a>
+            <a href="/about">About</a>
+            {{#if user}}
+            <a href="/logout">Log out</a>
+            {{else}}
+            <a href="/login">Login</a>
+            {{/if}}
+        </div>
     </nav>
 </header>
