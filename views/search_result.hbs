@@ -1,15 +1,26 @@
-    <section id="main-section">
+     <section id="main-section">
         <h2>Search Results</h2>
 
-        <!-- Dynamically generated team member list -->
-        <div class="team-members">
-            {{#each teamMembers}}
-                <div class="team-member-card">
-                    <h3>{{this.name}}</h3>
-                    <p>{{this.bio}}</p>
+        {{#if error}}
+            <div class="main-section-divs">
+                <p class="error-message">{{error}}</p>
+            </div>
+        {{else}}
+            {{#if teamMembers.length}}
+                <div class="team-members">
+                    {{#each teamMembers}}
+                        <div class="main-section-divs team-member-card">
+                            <h3>{{this.name}}</h3>
+                            <p class="email">{{this.email}}</p>
+                            <p class="classification">{{this.classification}}</p>
+                            <p class="bio">{{this.bio}}</p>
+                        </div>
+                    {{/each}}
                 </div>
             {{else}}
-                <p>No results found.</p>
-            {{/each}}
-        </div>
+                <div class="main-section-divs">
+                    <p>No results found.</p>
+                </div>
+            {{/if}}
+        {{/if}}
     </section>
