@@ -1,9 +1,10 @@
 const express = require('express');
-const mongoose = require('mongoose');
 const dotenv = require('dotenv');
 const path = require('path');
 const exphbs = require('express-handlebars');
 const session = require('express-session');
+const MongoStore = require('connect-mongo');
+const mongoose = require('mongoose');
 
 dotenv.config();
 
@@ -18,6 +19,7 @@ app.use(session({
     secret: 'lambda_lab_secret',
     resave: false,
     saveUninitialized: false,
+    store: MongoStore.create({ mongoUrl: process.env.MONGO_URI }),
     cookie: { secure: false } // true if HTTPS
 }));
 
@@ -51,14 +53,9 @@ app.set('view engine', 'hbs');
 app.set('views', path.join(__dirname, 'views'));
 
 // Connect to MongoDB
-mongoose.connect(process.env.MONGO_URI, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true
-}).then(() => console.log("MongoDB Connected"))
-    .catch(err => {
-        console.error("DB Connection Error:", err);
-        process.exit(1); // Exit if MongoDB connection fails
-    });
+mongoose.connect(process.env.MONGO_URI)
+    .then(() => console.log("MongoDB Connected"))
+    .catch(err => console.error("DB Connection Error:", err));
 
 // Use Routes
 app.use('/', userRoutes); // For POST requests
