@@ -1,6 +1,7 @@
 1. Install Dependencies 
 
-'npm install'
+'npm init -y'
+'npm i express express-handlebars body-parser mongoose mongodb'
 
 2. Start Server 
 
