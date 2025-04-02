@@ -15,17 +15,50 @@ router.get('/', async (req, res) => {
 // Reserve a seat
 router.post('/reserve', async (req, res) => {
     try {
-        const { seatNumber, classroom, userId, startDate, endDate } = req.body;
+        const { lab, seat, resDate, duration, anon } = req.body;
+        const userId = req.session.user.id;
 
-        const existingReservation = await SeatReservation.findOne({ seatNumber, classroom });
-        if (existingReservation) return res.status(400).json({ message: "Seat already reserved" });
+        // Convert duration to end date
+        const startDate = new Date(resDate);
+        const endDate = new Date(startDate.getTime() + duration * 60000);
 
-        const newReservation = new SeatReservation({ seatNumber, classroom, reservedBy: userId, startDate, endDate });
+        // Check for conflicts
+        const existing = await SeatReservation.findOne({
+            lab,
+            seat,
+            $or: [
+                {
+                    resDate: {
+                        $lt: new Date(endDate)
+                    }
+                },
+                {
+                    endDate: {
+                        $gt: new Date(startDate)
+                    }
+                }
+            ]
+        });
+
+        if (existing) {
+            return res.status(400).json({ message: "Seat already reserved" });
+        }
+
+        const newReservation = new SeatReservation({
+            lab,
+            seat,
+            resDate: startDate,
+            duration,
+            anon,
+            user: userId,
+            endDate
+        });
+
         await newReservation.save();
-
-        res.status(201).json({ message: "Seat reserved successfully!" });
+        res.status(201).json({ message: "Reservation successful!" });
     } catch (error) {
-        res.status(500).json({ message: "Server error", error });
+        console.error("Reservation error:", error);
+        res.status(500).json({ message: "Server error" });
     }
 });
 

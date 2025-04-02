@@ -20,7 +20,10 @@ app.use(session({
     resave: false,
     saveUninitialized: false,
     store: MongoStore.create({ mongoUrl: process.env.MONGO_URI }),
-    cookie: { secure: false } // true if HTTPS
+    cookie: {
+        secure: false,
+        maxAge: 24 * 60 * 60 * 1000
+    } // true if HTTPS
 }));
 
 // Middleware 
@@ -36,7 +39,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/js', (req, res, next) => {
     if (req.path.endsWith('.js')) {
-        res.type('application/javascript'); 
+        res.type('application/javascript');
     }
     next();
 });

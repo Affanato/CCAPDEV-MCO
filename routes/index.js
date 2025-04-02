@@ -2,10 +2,11 @@ const express = require('express');
 const router = express.Router();
 const User = require('../models/User'); // Adjust the path if necessary
 const packageJson = require('../package.json'); // path to package.json
+const SeatReservation = require('../models/SeatReservation');
 
 // Homepage Route
 router.get('/', (req, res) => {
-    res.render('landing_page',{
+    res.render('landing_page', {
         isLandingPage: true,
         cssFile: "landing_page.css",
         title: "Lambda Lab Reservation"
@@ -13,9 +14,9 @@ router.get('/', (req, res) => {
 });
 
 router.get('/home', (req, res) => {
-    res.render('landing_page',{
-        isLandingPage: true, 
-        cssFile:"landing_page.css",
+    res.render('landing_page', {
+        isLandingPage: true,
+        cssFile: "landing_page.css",
         title: "Lambda Lab Reservation"
     });
 });
@@ -49,7 +50,7 @@ router.get('/about', (req, res) => {
     }));
 
     res.render('about', {
-        cssFile: "about.css", 
+        cssFile: "about.css",
         title: "About Us",
         teamMembers,
         dependencies
@@ -70,7 +71,7 @@ router.get('/login', (req, res) => {
         cssFile: "login.css",
         title: "Login Page",
         error: req.query.error
-    });  
+    });
 });
 
 // Logout Route
@@ -93,12 +94,13 @@ router.get('/reservation', (req, res) => {
             { value: "St. La Salle", name: "St. La Salle" }
         ],
         rooms: [
+            { value: "GK304A", name: "GK304A" },
+            { value: "GK304B", name: "GK304B" },
             { value: "GK104", name: "GK104" },
-            { value: "GK103", name: "GK103" },
         ],
         currentMonth: "February",
         weekDays: ["Su", "Mo", "Tu", "We", "Th", "Fr", "Sa"],
-        availableDates: [28, 29, 30, 31, 1, 2, 3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,1,2,3,4,5,6,7,8,9,10],
+        availableDates: [28, 29, 30, 31, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
         times: [
             "7:30 AM", "8:00 AM", "8:30 AM", "9:00 AM", "9:30 AM", "10:00 AM", "10:30 AM", "11:00 AM", "11:30 AM",
             "12:00 PM", "12:30 PM", "1:00 PM", "1:30 PM", "2:00 PM", "2:30 PM", "3:00 PM", "3:30 PM", "4:00 PM",
@@ -108,35 +110,55 @@ router.get('/reservation', (req, res) => {
         selectedDate: "March 10, 2025",
         selectedTime: "7:30 PM",
         seatColumns: [
-            [{ seatNumber: 1, status: "" }, { seatNumber: 2, status: "" }, { seatNumber: 3, status: "reserved" }, { seatNumber: 4, status: "" }, { seatNumber: 5, status: "" }, { seatNumber: 6, status: "" }, { seatNumber: 7, status: "" }, { seatNumber:8, status: "" }, { seatNumber: 9, status: "" }, { seatNumber: 10, status: "" }, { seatNumber: 11, status: "" }, { seatNumber: 12, status: "" }, { seatNumber: 13, status: "" }, { seatNumber: 14, status: "" }, { seatNumber: 15, status: "" }, { seatNumber: 16, status: "" }, { seatNumber: 17, status: "" }, { seatNumber: 18, status: "" }],
+            [{ seatNumber: 1, status: "" }, { seatNumber: 2, status: "" }, { seatNumber: 3, status: "reserved" }, { seatNumber: 4, status: "" }, { seatNumber: 5, status: "" }, { seatNumber: 6, status: "" }, { seatNumber: 7, status: "" }, { seatNumber: 8, status: "" }, { seatNumber: 9, status: "" }, { seatNumber: 10, status: "" }, { seatNumber: 11, status: "" }, { seatNumber: 12, status: "" }, { seatNumber: 13, status: "" }, { seatNumber: 14, status: "" }, { seatNumber: 15, status: "" }, { seatNumber: 16, status: "" }, { seatNumber: 17, status: "" }, { seatNumber: 18, status: "" }],
             [{ seatNumber: 19, status: "" }, { seatNumber: 20, status: "" }, { seatNumber: 21, status: "" }, { seatNumber: 22, status: "" }, { seatNumber: 23, status: "" }, { seatNumber: 24, status: "" }, { seatNumber: 25, status: "" }, { seatNumber: 26, status: "" }, { seatNumber: 27, status: "" }, { seatNumber: 28, status: "" }, { seatNumber: 29, status: "" }, { seatNumber: 30, status: "" }, { seatNumber: 31, status: "" }, { seatNumber: 32, status: "" }, { seatNumber: 33, status: "" }, { seatNumber: 34, status: "" }, { seatNumber: 35, status: "" }, { seatNumber: 36, status: "" }],
-            [{ seatNumber: 1, status: "" }, { seatNumber: 2, status: "" }, { seatNumber: 3, status: "" }, { seatNumber: 4, status: "" }, { seatNumber: 5, status: "" }, { seatNumber: 6, status: "" }, { seatNumber: 7, status: "" }, { seatNumber:8, status: "" }, { seatNumber: 9, status: "" }, { seatNumber: 10, status: "" }, { seatNumber: 11, status: "" }, { seatNumber: 12, status: "" }, { seatNumber: 13, status: "" }, { seatNumber: 14, status: "" }, { seatNumber: 15, status: "" }, { seatNumber: 16, status: "" }, { seatNumber: 17, status: "" }, { seatNumber: 18, status: "" }],
-            [{ seatNumber: 1, status: "" }, { seatNumber: 2, status: "" }, { seatNumber: 3, status: "" }, { seatNumber: 4, status: "" }, { seatNumber: 5, status: "" }, { seatNumber: 6, status: "" }, { seatNumber: 7, status: "" }, { seatNumber:8, status: "" }, { seatNumber: 9, status: "" }, { seatNumber: 10, status: "" }, { seatNumber: 11, status: "" }, { seatNumber: 12, status: "" }, { seatNumber: 13, status: "" }, { seatNumber: 14, status: "" }, { seatNumber: 15, status: "" }, { seatNumber: 16, status: "" }, { seatNumber: 17, status: "" }, { seatNumber: 18, status: "" }]
+            [{ seatNumber: 1, status: "" }, { seatNumber: 2, status: "" }, { seatNumber: 3, status: "" }, { seatNumber: 4, status: "" }, { seatNumber: 5, status: "" }, { seatNumber: 6, status: "" }, { seatNumber: 7, status: "" }, { seatNumber: 8, status: "" }, { seatNumber: 9, status: "" }, { seatNumber: 10, status: "" }, { seatNumber: 11, status: "" }, { seatNumber: 12, status: "" }, { seatNumber: 13, status: "" }, { seatNumber: 14, status: "" }, { seatNumber: 15, status: "" }, { seatNumber: 16, status: "" }, { seatNumber: 17, status: "" }, { seatNumber: 18, status: "" }],
+            [{ seatNumber: 1, status: "" }, { seatNumber: 2, status: "" }, { seatNumber: 3, status: "" }, { seatNumber: 4, status: "" }, { seatNumber: 5, status: "" }, { seatNumber: 6, status: "" }, { seatNumber: 7, status: "" }, { seatNumber: 8, status: "" }, { seatNumber: 9, status: "" }, { seatNumber: 10, status: "" }, { seatNumber: 11, status: "" }, { seatNumber: 12, status: "" }, { seatNumber: 13, status: "" }, { seatNumber: 14, status: "" }, { seatNumber: 15, status: "" }, { seatNumber: 16, status: "" }, { seatNumber: 17, status: "" }, { seatNumber: 18, status: "" }]
         ],
-        cssFile : "reservation.css"
+        cssFile: "reservation.css"
     });
 });
 
 // Profile Route (GET)
 router.get('/profile', async (req, res) => {
-    if (!req.session.user) {
-        return res.redirect('/login');
+    if (!req.session.user) return res.redirect('/login');
+
+    try {
+        const user = await User.findById(req.session.user.id).lean();
+        const reservations = await SeatReservation.find({ user: user._id })
+            .sort({ resDate: -1 })
+            .lean();
+
+        // Format dates properly
+        const formattedReservations = reservations.map(r => ({
+            seat: r.seat,
+            venue: r.lab, // Match schema field name
+            requestDate: new Date(r.reqDate).toLocaleDateString('en-US', {
+                month: 'long', day: 'numeric', year: 'numeric'
+            }),
+            reservationDate: new Date(r.resDate).toLocaleString('en-US', {
+                month: 'long', day: 'numeric', year: 'numeric',
+                hour: 'numeric', minute: '2-digit', hour12: true
+            })
+        }));
+
+        res.render('profile', {
+            cssFile: "profile_styles.css",
+            title: "Lambda Lab Profile",
+            userName: `${user.firstname} ${user.lastname}`,
+            bio: user.bio || "No bio yet",
+            reservations: formattedReservations
+        });
+    } catch (error) {
+        console.error("Profile Error:", error);
+        res.redirect('/login');
     }
-
-    const user = await User.findById(req.session.user.id).lean();
-
-    res.render('profile', {
-        cssFile: "profile_styles.css",  
-        title: "Lambda Lab Profile",
-        userName: user.firstname + " " + user.lastname,
-        bio: user.bio || "No bio yet"// Pass the user's bio to the view
-    });
 });
 
 // Profile Edit Route (GET)
 router.get('/profile_edit', async (req, res) => {
     const user = await User.findById(req.session.user.id).lean();
-    
+
     if (!user) {
         return res.redirect('/profile'); // Redirect if user is not found
     }
@@ -162,7 +184,7 @@ router.get('/search', (req, res) => {
 
     // Filter members by matching the query with name or bio
     const filteredMembers = teamMembers.filter(member =>
-        member.name.toLowerCase().includes(query) || 
+        member.name.toLowerCase().includes(query) ||
         member.bio.toLowerCase().includes(query)
     );
 

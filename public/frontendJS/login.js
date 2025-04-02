@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const passwordInput = document.getElementById("password");
     const errorMessage = document.getElementById("error-message");
     const toggleButton = document.getElementById("field-icon");
-    
+
     if (loginForm) {
         loginForm.addEventListener('submit', async function (event) {
             event.preventDefault(); // Prevent default form submission
@@ -45,7 +45,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     // Toggle password visibility
-    
+
     if (toggleButton) {
         toggleButton.addEventListener("click", function () {
             if (passwordInput.type === "password") {
@@ -62,7 +62,7 @@ document.addEventListener("DOMContentLoaded", function () {
     // Search input handling
     const searchInput = document.getElementById("searchInput");
     if (searchInput) {
-        searchInput.addEventListener("keypress", function(event) {
+        searchInput.addEventListener("keypress", function (event) {
             if (event.key === "Enter") {
                 event.preventDefault();
                 document.getElementById("searchbtn").click();

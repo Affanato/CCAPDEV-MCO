@@ -1,122 +1,123 @@
-    {{!-- reservation.hbs --}}
-    
-    <section id="reservation-container">
-        <form id="reservation-forms" action="" method="POST">
-            <!-- Venue Selection Panel -->
-            <div id="venue-panel" class="reservation-panel">
-                <span>Venue</span>
-                <hr>
-                <div id="venue-selector-container">
-                    <div id="venue-labels">
-                        <label for="building">Building</label>
-                        <label for="room">Room</label>
-                    </div>
-                    <div id="venue-inputs">
-                        <select name="building" id="building" class="select" required>
-                            {{#each buildings}}
-                                <option value="{{this.value}}">{{this.name}}</option>
-                            {{/each}}
-                        </select>
-                        <select name="room" id="room" class="select" required>
-                            {{#each rooms}}
-                                <option value="{{this.value}}">{{this.name}}</option>
-                            {{/each}}
-                        </select>
-                    </div>
+{{!-- reservation.hbs --}}
+
+<section id="reservation-container">
+    <form id="reservation-forms" method="POST" action="javascript:void(0);">
+        <!-- Venue Selection Panel -->
+        <div id="venue-panel" class="reservation-panel">
+            <span>Venue</span>
+            <hr>
+            <div id="venue-selector-container">
+                <div id="venue-labels">
+                    <label for="building">Building</label>
+                    <label for="room">Room</label>
+                </div>
+                <div id="venue-inputs">
+                    <select name="building" id="building" class="select" required>
+                        {{#each buildings}}
+                        <option value="{{this.value}}">{{this.name}}</option>
+                        {{/each}}
+                    </select>
+                    <select name="room" id="room" class="select" required>
+                        {{#each rooms}}
+                        <option value="{{this.value}}">{{this.name}}</option>
+                        {{/each}}
+                    </select>
                 </div>
             </div>
+        </div>
 
-            <!-- Date Selection Panel -->
-            <div id="date-panel" class="reservation-panel">
-                <span>Date</span>
-                <hr>
-                <div id="date-input-container">
-                    <div id="date-labels">
-                        <label for="month">Month</label>
-                        <label for="Day">Day</label>
+        <!-- Date Selection Panel -->
+        <div id="date-panel" class="reservation-panel">
+            <span>Date</span>
+            <hr>
+            <div id="date-input-container">
+                <div id="date-labels">
+                    <label for="month">Month</label>
+                    <label for="Day">Day</label>
                 </div>
                 <div id="date-inputs">
-                        <select name="month" id="month" class="select" required>
-                        </select>
-                        <select name="day" id="day" class="select" required>
-                             <option value="1" class="selectDate">1</option>
-                        </select>
-                </div>
+                    <select name="month" id="month" class="select" required>
+                    </select>
+                    <select name="day" id="day" class="select" required>
+                        <option value="1" class="selectDate">1</option>
+                    </select>
                 </div>
             </div>
+        </div>
 
-            {{!-- <div id="calendar-container">
-                    <div id="month">    
-                        <img src="/Assets/leftarrow.png" alt="Previous Month" class="arrow-icon" id="prevMonth">
-                        <span id="currentMonth">{{currentMonth}}</span>
-                        <img src="/Assets/rightarrow.png" alt="Next Month" class="arrow-icon" id="nextMonth">
-                    </div>
-                    <div id="week">
-                        {{#each weekDays}}
-                            <div class="day">{{this}}</div>
-                        {{/each}}
-                    </div>
-                    <div id="days">
-                        {{#each availableDates}}
-                            <button class="date">{{this}}</button>
-                        {{/each}}
-                    </div>
-                </div> --}}
-
-            <!-- Time Selection Panel -->
-            <div id="time-panel" class="reservation-panel">
-                <span>Time</span>
-                <hr>
-                <select name="time" id="time" class="select" required>
-                    {{#each times}}
-                        <option value="{{this}}">{{this}}</option>
-                    {{/each}}
-                </select>
+        {{!-- <div id="calendar-container">
+            <div id="month">
+                <img src="/Assets/leftarrow.png" alt="Previous Month" class="arrow-icon" id="prevMonth">
+                <span id="currentMonth">{{currentMonth}}</span>
+                <img src="/Assets/rightarrow.png" alt="Next Month" class="arrow-icon" id="nextMonth">
             </div>
+            <div id="week">
+                {{#each weekDays}}
+                <div class="day">{{this}}</div>
+                {{/each}}
+            </div>
+            <div id="days">
+                {{#each availableDates}}
+                <button class="date">{{this}}</button>
+                {{/each}}
+            </div>
+        </div> --}}
 
-            <button type="submit">Check Availability</button>
-        </form>
+        <!-- Time Selection Panel -->
+        <div id="time-panel" class="reservation-panel">
+            <span>Time</span>
+            <hr>
+            <select name="time" id="time" class="select" required>
+                {{#each times}}
+                <option value="{{this}}">{{this}}</option>
+                {{/each}}
+            </select>
+        </div>
+
+        <button type="submit">Check Availability</button>
+    </form>
+</section>
+
+<!-- Reservation Details Section -->
+<section id="reservation-display">
+    <section id="information-display">
+        <div id="venue-display">
+            <span>{{selectedRoom}}</span>
+        </div>
+        <div id="date-display">
+            <span>{{selectedDate}}</span>
+        </div>
+        <div id="time-display">
+            <span>{{selectedTime}}</span>
+        </div>
     </section>
 
-    <!-- Reservation Details Section -->
-    <section id="reservation-display">
-        <section id="information-display">
-            <div id="venue-display">
-                <span>{{selectedRoom}}</span>
-            </div>
-            <div id="date-display">
-                <span>{{selectedDate}}</span>
-            </div>
-            <div id="time-display">
-                <span>{{selectedTime}}</span>
-            </div>
-        </section>
-
-        <!-- Seat Layout Section -->
-        <section id="seat-container">
-            <div id="whiteboard">Board</div>
-            <section id="seat-layout">
-                <form id="seat-form" action="" method="POST">
-                    {{#each seatColumns}}
-                        <div class="column">
-                            {{#each this}}
-                                <input type="button" value="" class="{{status}}">
-                                {{!-- <input type="button" value="Seat {{seatNumber}}" class="{{status}}"> --}}
-                            {{/each}}
-                        </div>
+    <!-- Seat Layout Section -->
+    <section id="seat-container">
+        <div id="whiteboard">Board</div>
+        <section id="seat-layout">
+            <form id="seat-form" action="" method="POST">
+                {{#each seatColumns}}
+                <div class="column">
+                    {{#each this}}
+                    <input type="button" value="" class="{{status}}">
+                    {{!-- <input type="button" value="Seat {{seatNumber}}" class="{{status}}"> --}}
                     {{/each}}
-                </form>
-            </section>
-        </section>
-
-        <!-- Legend for Seat Availability -->
-        <section id="legend">
-            <div><input type="button" id="available">Available</div>
-            <div><input type="button" id="unavailable">Unavailable</div>
-            <div><input type="button" id="selected">Selected</div>
+                </div>
+                {{/each}}
+            </form>
         </section>
     </section>
-    <script src="/frontendJS/buildingSelection.js"></script>
-    <script src="/frontendJS/calendarSelection.js"></script>
-    <script src="/frontendJS/displayInformation.js"></script>
-    <script src="/frontendJS/seatSelection.js"></script>
+
+    <!-- Legend for Seat Availability -->
+    <section id="legend">
+        <div><input type="button" id="available">Available</div>
+        <div><input type="button" id="unavailable">Unavailable</div>
+        <div><input type="button" id="selected">Selected</div>
+    </section>
+</section>
+<script src="/frontendJS/buildingSelection.js"></script>
+<script src="/frontendJS/calendarSelection.js"></script>
+<script src="/frontendJS/displayInformation.js"></script>
+<script src="/frontendJS/seatSelection.js"></script>
+<script src="/frontendJS/reservationHandler.js"></script>
