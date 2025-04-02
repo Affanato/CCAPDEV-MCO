@@ -60,7 +60,8 @@ router.get('/register', (req, res) => {
 router.get('/login', (req, res) => {
     res.render('login', {
         cssFile: "login.css",
-        title: "Login Page"
+        title: "Login Page",
+        error: req.query.error
     });  
 });
 
