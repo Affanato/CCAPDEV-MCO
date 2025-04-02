@@ -132,9 +132,10 @@ router.get('/profile', async (req, res) => {
         // Format dates properly
         const formattedReservations = reservations.map(r => ({
             seat: r.seat,
-            venue: r.lab, // Match schema field name
-            requestDate: new Date(r.reqDate).toLocaleDateString('en-US', {
-                month: 'long', day: 'numeric', year: 'numeric'
+           venue: r.lab,
+            requestDate: new Date(r.reqDate || r.createdAt).toLocaleString('en-US', {
+                month: 'long', day: 'numeric', year: 'numeric',
+                hour: 'numeric', minute: '2-digit', hour12: true
             }),
             reservationDate: new Date(r.resDate).toLocaleString('en-US', {
                 month: 'long', day: 'numeric', year: 'numeric',
