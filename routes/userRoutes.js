@@ -9,7 +9,7 @@ router.post('/register', async (req, res) => {
         const { classification, firstname, lastname, email, password, verifyPassword } = req.body;
         // Check if passwords match
         if (password !== verifyPassword) {
-            return res.status(400).send("Passwords do not match!");
+            return res.redirect('/register?error=' + encodeURIComponent('Passwords do not match!'));
         }
 
         // Hash the password
@@ -37,7 +37,11 @@ router.post('/register', async (req, res) => {
         res.redirect(`/profile?name=${encodeURIComponent(firstname + ' ' + lastname)}`);
     } catch (error) {
         console.error(error);
-        res.status(500).send("Internal Server Error");
+        // Check if the error is due to duplicate email
+        if (error.code === 11000) {
+            return res.redirect('/register?error=' + encodeURIComponent('Email already exists!'));
+        }
+        res.redirect('/register?error=' + encodeURIComponent('An error occurred during registration.'));
     }
 });
 
@@ -49,14 +53,14 @@ router.post('/login', async (req, res) => {
         const user = await User.findOne({ email });
 
         if (!user) {
-            return res.status(401).json({ message: "Invalid email or password." });
+            return res.redirect('/login?error=' + encodeURIComponent('Invalid email or password.'));
         }
 
         // Compare the provided password with the hashed password in the database
         const validPassword = await bcrypt.compare(password, user.password);
 
         if (!validPassword) {
-            return res.status(401).json({ message: "Invalid email or password." });
+            return res.redirect('/login?error=' + encodeURIComponent('Invalid email or password.'));
         }
 
         // Set session upon successful login
@@ -71,7 +75,7 @@ router.post('/login', async (req, res) => {
         res.redirect(`/profile?name=${encodeURIComponent(user.firstname + ' ' + user.lastname)}`);
     } catch (error) {
         console.error("Login Error:", error);
-        res.status(500).json({ message: "Internal Server Error." });
+        res.redirect('/login?error=' + encodeURIComponent('An error occurred. Please try again.'));
     }
 });
 
@@ -90,7 +94,7 @@ router.post('/profile', async (req, res) => {
         res.redirect('/profile');
     } catch (error) {
         console.error(error);
-        res.status(500).send('An error occurred while updating the profile.');
+        res.redirect('/profile?error=' + encodeURIComponent('An error occurred while updating the profile.'));
     }
 });
 
